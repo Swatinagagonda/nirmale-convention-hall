@@ -1,0 +1,537 @@
+{
+  "site": {
+    "name": "Nirmale Convention Hall",
+    "tagline": "Convention & Celebrations",
+    "location": "Aurad, Karnataka",
+    "address": "75, Lidkar Colony, Aurad, Karnataka 585326",
+    "phone": "98805 40333",
+    "altPhones": "90710 18252 / 08485 354152",
+    "whatsapp": "9880540333",
+    "email": "Nirmaleconventiondemo@gmail.com",
+    "mapQuery": "Nirmale Function Hall, 75 Lidkar Colony, Aurad, Karnataka 585326",
+    "capacity": "",
+    "hours": "Open all days · 9:00 AM – 9:00 PM for site visits",
+    "googleRating": "5.0",
+    "googleReviewsUrl": "https://www.google.com/search?q=Nirmale+Function+Hall+Aurad+reviews",
+    "instagram": "",
+    "facebook": "",
+    "youtube": ""
+  },
+  "hero": {
+    "image": "/uploads/hero-convention-hall.jpg",
+    "eyebrow": "Weddings · Receptions · Celebrations",
+    "title": "The Perfect Venue for Your Special Moments",
+    "text": "A grand, beautifully lit convention hall in the heart of Aurad – for weddings, receptions, engagements, naming ceremonies, corporate events and every celebration in between."
+  },
+  "about": {
+    "image": "/uploads/exterior-night-front.jpg",
+    "image2": "/uploads/exterior-design-dusk.jpg",
+    "intro": "Nirmale Convention Hall is Aurad's elegant address for life's biggest celebrations. From the moment guests arrive at our illuminated façade to the instant the couple steps onto a flower-filled stage, every space is designed to feel grand, welcoming and unforgettable.",
+    "story": "Built by the Nirmale family with a simple promise – that every family in Aurad and the surrounding villages deserves a dignified, beautiful venue close to home – the hall brings together a modern multi-storey building, a spacious function hall and a stage that transforms for every occasion. Whether it is a traditional wedding with hundreds of relatives, an intimate haldi, a naming ceremony or a company gathering, our team works with you on décor, lighting, seating and arrangements so you can simply enjoy the day.",
+    "vision": "To be the most trusted celebration venue in the Bidar district – a place where families feel at home, guests feel honoured, and every event is remembered for its beauty and warmth."
+  },
+  "team": [
+    {
+      "id": "owner",
+      "name": "Mr. Jaganath Nirmale",
+      "role": "Founder & Owner",
+      "photo": "/uploads/owner-jaganath-nirmale.jpg",
+      "bio": "Mr. Jaganath Nirmale is the vision behind Nirmale Convention Hall. A respected name in Aurad, he built the hall so that families of the region could celebrate their most important days in a grand, modern venue without travelling to the city. He believes in transparent pricing, warm hospitality and treating every guest's function like a celebration in his own family.",
+      "quote": "Every celebration that happens here carries our family's name. We make sure it is one you are proud of.",
+      "highlights": [
+        "Founder of Nirmale Convention Hall",
+        "Personally oversees every booking",
+        "Transparent, honest pricing",
+        "A respected name in Aurad"
+      ],
+      "summary": "The founder and vision behind Nirmale Convention Hall – he built a grand, modern venue so families of Aurad can celebrate their biggest days close to home."
+    },
+    {
+      "id": "manager",
+      "name": "Mr. Rahul G. Kade",
+      "role": "Hall Manager",
+      "photo": "/uploads/manager-rahul-g-kade.jpg",
+      "bio": "Mr. Rahul G. Kade manages the hall's day-to-day operations and is your first point of contact – from the first site visit and checking dates, to coordinating décor, lighting, sound and seating on the day of your event. Known for quick responses and close attention to detail, he makes planning simple and stress-free for every family and organiser.",
+      "quote": "Tell us how you imagine your day – we will take care of the arrangements.",
+      "highlights": [
+        "Your first point of contact",
+        "Site visits & date availability",
+        "Décor, lighting & sound coordination",
+        "On-site support on your event day"
+      ],
+      "summary": "Manages the hall day to day and is your first point of contact – from site visits and checking dates to coordinating every arrangement on your event day."
+    }
+  ],
+  "stats": [
+    {
+      "value": "5.0",
+      "label": "Google Rating"
+    },
+    {
+      "value": "12+",
+      "label": "Facilities & Services"
+    },
+    {
+      "value": "9+",
+      "label": "Types of Events"
+    },
+    {
+      "value": "30+",
+      "label": "Stage Décor Looks"
+    }
+  ],
+  "events": [
+    {
+      "key": "weddings",
+      "title": "Weddings",
+      "image": "/uploads/photo-20-t.jpg",
+      "text": "Traditional and modern weddings with a grand stage, floral mandap backdrops and space for all your relatives."
+    },
+    {
+      "key": "receptions",
+      "title": "Wedding Receptions",
+      "image": "/uploads/photo-19-t.jpg",
+      "text": "Elegant evening receptions with dramatic lighting, a royal couple seat and room to welcome every guest."
+    },
+    {
+      "key": "engagements",
+      "title": "Engagements",
+      "image": "/uploads/photo-11-t.jpg",
+      "text": "A graceful setting for ring ceremonies and nischitartha – beautiful backdrops for every photograph."
+    },
+    {
+      "key": "haldi",
+      "title": "Haldi & Mehendi",
+      "image": "/uploads/photo-24-t.jpg",
+      "text": "Bright marigold themes, brass urli and festive décor for haldi, mehendi and sangeet."
+    },
+    {
+      "key": "birthdays",
+      "title": "Birthday Celebrations",
+      "image": "/uploads/photo-31-t.jpg",
+      "text": "First birthdays, milestone birthdays and private parties with themed stages and lighting."
+    },
+    {
+      "key": "naming",
+      "title": "Naming Ceremonies",
+      "image": "/uploads/photo-29-t.jpg",
+      "text": "Cradle décor and floral settings for naming ceremonies, baby showers and seemantham."
+    },
+    {
+      "key": "corporate",
+      "title": "Corporate Events",
+      "image": "/uploads/photo-07-t.jpg",
+      "text": "Company functions, dealer meets, product launches, annual days and business meetings."
+    },
+    {
+      "key": "conferences",
+      "title": "Conferences & Seminars",
+      "image": "/uploads/photo-06-t.jpg",
+      "text": "Conferences, seminars, workshops and training programmes with flexible seating and sound."
+    },
+    {
+      "key": "cultural",
+      "title": "Cultural & Social Events",
+      "image": "/uploads/photo-30-t.jpg",
+      "text": "Cultural programmes, community gatherings, pooja functions and award ceremonies."
+    }
+  ],
+  "facilities": [
+    {
+      "key": "stage",
+      "icon": "stage",
+      "title": "Grand Stage",
+      "text": "A wide, raised stage that transforms for every theme – floral, royal, modern or traditional.",
+      "status": "available"
+    },
+    {
+      "key": "lighting",
+      "icon": "light",
+      "title": "Professional Lighting",
+      "text": "Ceiling lighting, stage spotlights and festive façade lighting that make every photo glow.",
+      "status": "available"
+    },
+    {
+      "key": "sound",
+      "icon": "sound",
+      "title": "Sound System",
+      "text": "Speakers and microphones for ceremonies, speeches, music and DJ nights.",
+      "status": "available"
+    },
+    {
+      "key": "decor",
+      "icon": "flower",
+      "title": "Stage Décor",
+      "text": "Floral, haldi, reception and theme décor arranged with trusted decorators.",
+      "status": "available"
+    },
+    {
+      "key": "ac",
+      "icon": "ac",
+      "title": "Air Conditioning",
+      "text": "A comfortable, cool hall for guests through long ceremonies.",
+      "status": "ask"
+    },
+    {
+      "key": "parking",
+      "icon": "car",
+      "title": "Parking",
+      "text": "Parking space for guests' cars and two-wheelers at the venue.",
+      "status": "ask"
+    },
+    {
+      "key": "dining",
+      "icon": "dining",
+      "title": "Dining Area",
+      "text": "A separate dining space so meals are served comfortably while the function continues.",
+      "status": "ask"
+    },
+    {
+      "key": "catering",
+      "icon": "catering",
+      "title": "Catering & Kitchen",
+      "text": "Kitchen facilities for your caterer, or recommendations for trusted local caterers.",
+      "status": "ask"
+    },
+    {
+      "key": "power",
+      "icon": "power",
+      "title": "Power Backup",
+      "text": "Generator backup so lights, sound and fans keep running without interruption.",
+      "status": "ask"
+    },
+    {
+      "key": "restrooms",
+      "icon": "restroom",
+      "title": "Clean Restrooms",
+      "text": "Well-maintained restrooms for ladies and gents.",
+      "status": "ask"
+    },
+    {
+      "key": "cctv",
+      "icon": "shield",
+      "title": "CCTV & Security",
+      "text": "Camera coverage and watchful staff for a safe, secure function.",
+      "status": "ask"
+    },
+    {
+      "key": "rooms",
+      "icon": "bed",
+      "title": "Rooms",
+      "text": "Rooms for the bride, groom and family to get ready and rest.",
+      "status": "ask"
+    },
+    {
+      "key": "access",
+      "icon": "access",
+      "title": "Accessibility",
+      "text": "Easy access for elders and guests with limited mobility.",
+      "status": "ask"
+    }
+  ],
+  "gallery": [
+    {
+      "id": "photo-01",
+      "src": "/uploads/photo-01.jpg",
+      "thumb": "/uploads/photo-01-t.jpg",
+      "caption": "Nirmale Convention Hall at dusk",
+      "category": "Exterior",
+      "featured": true
+    },
+    {
+      "id": "photo-02",
+      "src": "/uploads/photo-02.jpg",
+      "thumb": "/uploads/photo-02-t.jpg",
+      "caption": "Front façade lit up for a celebration",
+      "category": "Exterior",
+      "featured": false
+    },
+    {
+      "id": "photo-03",
+      "src": "/uploads/photo-03.jpg",
+      "thumb": "/uploads/photo-03-t.jpg",
+      "caption": "Festive lighting across all floors",
+      "category": "Exterior",
+      "featured": false
+    },
+    {
+      "id": "photo-04",
+      "src": "/uploads/photo-04.jpg",
+      "thumb": "/uploads/photo-04-t.jpg",
+      "caption": "Hall entrance on an event night",
+      "category": "Exterior",
+      "featured": false
+    },
+    {
+      "id": "photo-06",
+      "src": "/uploads/photo-06.jpg",
+      "thumb": "/uploads/photo-06-t.jpg",
+      "caption": "Spacious hall with polished flooring",
+      "category": "Hall Interior",
+      "featured": false
+    },
+    {
+      "id": "photo-07",
+      "src": "/uploads/photo-07.jpg",
+      "thumb": "/uploads/photo-07-t.jpg",
+      "caption": "Wide view of the hall and stage",
+      "category": "Hall Interior",
+      "featured": true
+    },
+    {
+      "id": "photo-08",
+      "src": "/uploads/photo-08.jpg",
+      "thumb": "/uploads/photo-08-t.jpg",
+      "caption": "Warm-lit hall set for a function",
+      "category": "Hall Interior",
+      "featured": false
+    },
+    {
+      "id": "photo-09",
+      "src": "/uploads/photo-09.jpg",
+      "thumb": "/uploads/photo-09-t.jpg",
+      "caption": "Ceiling lights and grand stage",
+      "category": "Hall Interior",
+      "featured": false
+    },
+    {
+      "id": "photo-10",
+      "src": "/uploads/photo-10.jpg",
+      "thumb": "/uploads/photo-10-t.jpg",
+      "caption": "White lotus stage with floral border",
+      "category": "Stage",
+      "featured": true
+    },
+    {
+      "id": "photo-11",
+      "src": "/uploads/photo-11.jpg",
+      "thumb": "/uploads/photo-11-t.jpg",
+      "caption": "Golden wings stage backdrop",
+      "category": "Stage",
+      "featured": false
+    },
+    {
+      "id": "photo-12",
+      "src": "/uploads/photo-12.jpg",
+      "thumb": "/uploads/photo-12-t.jpg",
+      "caption": "Classic white drape stage",
+      "category": "Stage",
+      "featured": false
+    },
+    {
+      "id": "photo-13",
+      "src": "/uploads/photo-13.jpg",
+      "thumb": "/uploads/photo-13-t.jpg",
+      "caption": "Teal and white floral stage",
+      "category": "Stage",
+      "featured": true
+    },
+    {
+      "id": "photo-14",
+      "src": "/uploads/photo-14.jpg",
+      "thumb": "/uploads/photo-14-t.jpg",
+      "caption": "Ivory lotus stage design",
+      "category": "Stage",
+      "featured": false
+    },
+    {
+      "id": "photo-15",
+      "src": "/uploads/photo-15.jpg",
+      "thumb": "/uploads/photo-15-t.jpg",
+      "caption": "Arched reception stage",
+      "category": "Stage",
+      "featured": false
+    },
+    {
+      "id": "photo-16",
+      "src": "/uploads/photo-16.jpg",
+      "thumb": "/uploads/photo-16-t.jpg",
+      "caption": "Green and gold lotus stage",
+      "category": "Stage",
+      "featured": true
+    },
+    {
+      "id": "photo-17",
+      "src": "/uploads/photo-17.jpg",
+      "thumb": "/uploads/photo-17-t.jpg",
+      "caption": "Golden marble stage setup",
+      "category": "Stage",
+      "featured": false
+    },
+    {
+      "id": "photo-18",
+      "src": "/uploads/photo-18.jpg",
+      "thumb": "/uploads/photo-18-t.jpg",
+      "caption": "Candle-arch stage with garlands",
+      "category": "Stage",
+      "featured": false
+    },
+    {
+      "id": "photo-19",
+      "src": "/uploads/photo-19.jpg",
+      "thumb": "/uploads/photo-19-t.jpg",
+      "caption": "Grand reception stage",
+      "category": "Stage",
+      "featured": false
+    },
+    {
+      "id": "photo-20",
+      "src": "/uploads/photo-20.jpg",
+      "thumb": "/uploads/photo-20-t.jpg",
+      "caption": "Bride and groom on a floral stage",
+      "category": "Weddings",
+      "featured": true
+    },
+    {
+      "id": "photo-21",
+      "src": "/uploads/photo-21.jpg",
+      "thumb": "/uploads/photo-21-t.jpg",
+      "caption": "Wedding stage preparations",
+      "category": "Weddings",
+      "featured": false
+    },
+    {
+      "id": "photo-22",
+      "src": "/uploads/photo-22.jpg",
+      "thumb": "/uploads/photo-22-t.jpg",
+      "caption": "Wedding stage with arched backdrop",
+      "category": "Weddings",
+      "featured": false
+    },
+    {
+      "id": "photo-23",
+      "src": "/uploads/photo-23.jpg",
+      "thumb": "/uploads/photo-23-t.jpg",
+      "caption": "Haldi ceremony backdrop",
+      "category": "Decorations",
+      "featured": false
+    },
+    {
+      "id": "photo-24",
+      "src": "/uploads/photo-24.jpg",
+      "thumb": "/uploads/photo-24-t.jpg",
+      "caption": "Golden lotus haldi setup",
+      "category": "Decorations",
+      "featured": true
+    },
+    {
+      "id": "photo-25",
+      "src": "/uploads/photo-25.jpg",
+      "thumb": "/uploads/photo-25-t.jpg",
+      "caption": "Marigold triangle haldi stage",
+      "category": "Decorations",
+      "featured": false
+    },
+    {
+      "id": "photo-26",
+      "src": "/uploads/photo-26.jpg",
+      "thumb": "/uploads/photo-26-t.jpg",
+      "caption": "Yellow and gold haldi décor",
+      "category": "Decorations",
+      "featured": false
+    },
+    {
+      "id": "photo-27",
+      "src": "/uploads/photo-27.jpg",
+      "thumb": "/uploads/photo-27-t.jpg",
+      "caption": "Ganesha marigold backdrop",
+      "category": "Decorations",
+      "featured": false
+    },
+    {
+      "id": "photo-28",
+      "src": "/uploads/photo-28.jpg",
+      "thumb": "/uploads/photo-28-t.jpg",
+      "caption": "Marigold arch décor",
+      "category": "Decorations",
+      "featured": false
+    },
+    {
+      "id": "photo-29",
+      "src": "/uploads/photo-29.jpg",
+      "thumb": "/uploads/photo-29-t.jpg",
+      "caption": "Naming ceremony cradle décor",
+      "category": "Events",
+      "featured": true
+    },
+    {
+      "id": "photo-30",
+      "src": "/uploads/photo-30.jpg",
+      "thumb": "/uploads/photo-30-t.jpg",
+      "caption": "Pooja and family function",
+      "category": "Events",
+      "featured": false
+    },
+    {
+      "id": "photo-31",
+      "src": "/uploads/photo-31.jpg",
+      "thumb": "/uploads/photo-31-t.jpg",
+      "caption": "Engagement stage with heart décor",
+      "category": "Events",
+      "featured": false
+    }
+  ],
+  "videos": [
+    {
+      "id": "v0",
+      "youtubeId": "DLAvf9oyyTU",
+      "title": "Royal Reception Décor",
+      "category": "Receptions"
+    },
+    {
+      "id": "v1",
+      "youtubeId": "wmSLMwwlcBU",
+      "title": "Elegant & Simple Stage Decorations for Wedding and Reception",
+      "category": "Weddings"
+    },
+    {
+      "id": "v2",
+      "youtubeId": "mPzv2RyfeOM",
+      "title": "60+ New Wedding Stage Decoration Ideas",
+      "category": "Weddings"
+    },
+    {
+      "id": "v3",
+      "youtubeId": "gGIXFJsUUzY",
+      "title": "Engagement & Reception Flower Decoration",
+      "category": "Engagements"
+    },
+    {
+      "id": "v4",
+      "youtubeId": "3-3m4n5b4K4",
+      "title": "Elegant Night Reception Stage Ideas",
+      "category": "Receptions"
+    },
+    {
+      "id": "v5",
+      "youtubeId": "GUcfmYirDqQ",
+      "title": "Wedding Stage Backdrop & Flower Decoration",
+      "category": "Weddings"
+    },
+    {
+      "id": "v6",
+      "youtubeId": "au3xeo8Q6dA",
+      "title": "Stage Decoration Ideas for Function Halls",
+      "category": "Stage Décor"
+    },
+    {
+      "id": "v7",
+      "youtubeId": "NQ5ApnEdssE",
+      "title": "Engagement Stage Decoration",
+      "category": "Engagements"
+    },
+    {
+      "id": "v8",
+      "youtubeId": "GZ5gANJ_1TU",
+      "title": "Flower Arch Wedding Setup",
+      "category": "Weddings"
+    },
+    {
+      "id": "v9",
+      "youtubeId": "DWFYBfjh_mM",
+      "title": "Haldi Stage Decoration",
+      "category": "Haldi & Mehendi"
+    }
+  ],
+  "reviews": []
+}

@@ -1,0 +1,18 @@
+{
+  "name": "nirmale-convention-hall",
+  "version": "1.0.0",
+  "description": "Website for Nirmale Convention Hall, Aurad – with admin panel for photos, videos and content",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "multer": "^2.4.0",
+    "nodemailer": "^10.1.2"
+  }
+}
