@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin | Nirmale Convention Hall</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0907">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body { padding-bottom: 0 !important; }
+    .admin-shell { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
+    .side { background: #060504; border-right: 1px solid var(--line); padding: 26px 16px; position: sticky; top: 0; height: 100vh; overflow: auto; display: flex; flex-direction: column; }
+    .side .brand { padding: 0 8px 26px; border-bottom: 1px solid var(--line); margin-bottom: 18px; }
+    .side .brand-name { font-size: 1.15rem; }
+    .tab-btn { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 12px 14px; border-radius: 10px; border: 0; background: transparent; color: var(--muted); font-size: .95rem; }
+    .tab-btn:hover { color: var(--text); background: rgba(255,255,255,.03); }
+    .tab-btn.active { background: rgba(212,175,95,.12); color: var(--gold-2); }
+    .tab-btn .badge { margin-left: auto; background: var(--gold); color: #000; font-size: .72rem; padding: 2px 8px; border-radius: 999px; }
+    .side-foot { margin-top: auto; padding-top: 20px; display: grid; gap: 8px; }
+    .main { padding: 34px clamp(18px, 4vw, 50px) 80px; min-width: 0; }
+    .main h1 { font-size: 2.6rem; margin-bottom: 6px; }
+    .main > p { margin-bottom: 28px; }
+    .panel { display: none; } .panel.active { display: block; animation: fade .3s; }
+    .box { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 24px; margin-bottom: 22px; }
+    .box h3 { font-size: 1.5rem; }
+    .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .field input[type=file] { padding: 10px; }
+    .admin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; }
+    .ph { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--bg); display: flex; flex-direction: column; }
+    .ph.dragging { opacity: .4; } .ph.over { outline: 2px dashed var(--gold); }
+    .ph-img { position: relative; aspect-ratio: 4/3; background: #000; cursor: grab; }
+    .ph-img img { width: 100%; height: 100%; object-fit: cover; }
+    .ph-img .star { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,.7); border: 1px solid var(--line-strong); color: var(--muted); border-radius: 999px; padding: 4px 10px; font-size: .75rem; }
+    .ph-img .star.on { background: var(--gold); color: #000; border-color: var(--gold); }
+    .ph-body { padding: 12px; display: grid; gap: 8px; }
+    .ph-body input, .ph-body select, .mini { width: 100%; background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; color: var(--text); font: 400 .88rem var(--sans); }
+    .ph-body select option { background: var(--surface); }
+    .ph-actions { display: flex; gap: 6px; }
+    .icon-btn { flex: 1; height: 36px; border-radius: 8px; border: 1px solid var(--line); background: transparent; color: var(--muted); font-size: .82rem; }
+    .icon-btn:hover { border-color: var(--line-strong); color: var(--gold-2); }
+    .icon-btn.danger:hover { border-color: var(--danger); color: var(--danger); }
+    .drop { border: 1.5px dashed var(--line-strong); border-radius: var(--radius); padding: 30px; text-align: center; transition: background .2s; cursor: pointer; }
+    .drop.over, .drop:hover { background: rgba(212,175,95,.06); }
+    .drop b { color: var(--gold-2); }
+    .toolbar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .list-item { display: grid; grid-template-columns: 160px 1fr auto; gap: 16px; align-items: start; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); margin-bottom: 12px; }
+    .list-item img { width: 160px; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; }
+    .team-edit { display: grid; grid-template-columns: 180px 1fr; gap: 22px; }
+    .team-edit img { width: 180px; aspect-ratio: 1; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); }
+    table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--gold); font-weight: 500; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; }
+    td small { color: var(--muted); }
+    .status { background: var(--bg); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 6px 8px; }
+    .status option { background: var(--surface); }
+    .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120px); background: var(--surface-2); border: 1px solid var(--line-strong); color: var(--text); padding: 14px 22px; border-radius: 999px; z-index: 500; transition: transform .35s; box-shadow: var(--shadow); }
+    .toast.show { transform: translateX(-50%); } .toast.err { border-color: var(--danger); color: #f2b3aa; }
+    .login-wrap { min-height: 100vh; display: grid; place-items: center; padding: 20px; background: radial-gradient(circle at 50% 0%, rgba(212,175,95,.12), transparent 60%), var(--bg); }
+    .login { width: min(420px, 100%); border: 1px solid var(--line-strong); border-radius: var(--radius-lg); padding: 40px 34px; background: var(--surface); text-align: center; }
+    .login .field { text-align: left; margin-bottom: 16px; }
+    .progress { height: 4px; background: var(--line); border-radius: 4px; overflow: hidden; margin-top: 14px; display: none; }
+    .progress div { height: 100%; width: 0; background: var(--gold-grad); transition: width .2s; }
+    .hint { font-size: .85rem; color: var(--muted-2); }
+    .mobile-tabs { display: none; }
+    @media (max-width: 860px) {
+      .admin-shell { grid-template-columns: 1fr; }
+      .side { display: none; }
+      .mobile-tabs { display: flex; gap: 6px; overflow-x: auto; padding: 12px 16px; position: sticky; top: 0; z-index: 10; background: #060504; border-bottom: 1px solid var(--line); }
+      .mobile-tabs .tab-btn { white-space: nowrap; width: auto; padding: 8px 14px; }
+      .list-item { grid-template-columns: 1fr; } .list-item img { width: 100%; }
+      .team-edit { grid-template-columns: 1fr; }
+      table, tbody, tr, td { display: block; } thead { display: none; } tr { border: 1px solid var(--line); border-radius: 10px; margin-bottom: 12px; padding: 8px; } td { border: 0; padding: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-wrap" id="login-view" hidden>
+  <form class="login" id="login-form">
+    <svg width="56" height="64" viewBox="0 0 46 52" style="margin:0 auto 14px"><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3dc9c"/><stop offset=".5" stop-color="#d4af5f"/><stop offset="1" stop-color="#a8823a"/></linearGradient></defs><path d="M2 51V23a21 21 0 0 1 42 0v28z" fill="none" stroke="url(#lg2)" stroke-width="1.4"/><text x="23" y="41" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="25" fill="url(#lg2)">N</text></svg>
+    <h2 style="font-size:2rem">Admin Login</h2>
+    <p>Manage photos, videos and website content.</p>
+    <div class="field"><label for="u">Username</label><input id="u" name="username" autocomplete="username" required value="admin"></div>
+    <div class="field"><label for="pw">Password</label><input id="pw" name="password" type="password" autocomplete="current-password" required></div>
+    <button class="btn btn-gold" style="width:100%" type="submit">Log In</button>
+    <p class="form-msg" id="login-err" role="alert"></p>
+    <p style="margin-top:18px"><a href="index.html" class="hint">← Back to website</a></p>
+  </form>
+</div>
+
+<div class="admin-shell" id="app" hidden>
+  <aside class="side">
+    <a class="brand" href="index.html" target="_blank"><span><span class="brand-name">Nirmale Admin</span><span class="brand-tag">Website manager</span></span></a>
+    <nav id="tabs"></nav>
+    <div class="side-foot">
+      <a class="btn btn-outline btn-sm" href="index.html" target="_blank">View Website</a>
+      <button class="btn btn-outline btn-sm" id="logout">Log Out</button>
+    </div>
+  </aside>
+  <div>
+    <div class="mobile-tabs" id="mtabs"></div>
+    <div class="main" id="panels"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="assets/js/admin.js" defer></script>
+</body>
+</html>

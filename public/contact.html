@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Booking Enquiry & Contact | Nirmale Convention Hall, Aurad</title>
+  <meta name="description" content="Check availability and send a booking enquiry to Nirmale Convention Hall, 75 Lidkar Colony, Aurad, Karnataka 585326. Call 98805 40333 or WhatsApp us.">
+  <meta name="theme-color" content="#0a0907">
+  <meta property="og:title" content="Book Nirmale Convention Hall, Aurad">
+  <meta property="og:image" content="/uploads/hero-convention-hall.jpg">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="contact">
+<main id="main">
+  <section class="page-hero">
+    <img src="/uploads/exterior-night-front.jpg" alt="">
+    <div class="container">
+      <span class="eyebrow">Booking & contact</span>
+      <h1>Let's plan your <span class="gold-text">celebration.</span></h1>
+      <p class="lead">Send an enquiry, call or WhatsApp – we usually reply the same day.</p>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Booking & Contact</span></nav>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:50px" id="enquiry">
+    <div class="container contact-grid">
+      <div class="form-card reveal">
+        <form id="enquiry-form" novalidate>
+          <span class="eyebrow">Booking enquiry</span>
+          <h2 style="font-size:clamp(2rem,3.4vw,2.8rem)">Check <span class="gold-text">availability</span></h2>
+          <p>Fill in a few details and our team will get back to you with availability and arrangements.</p>
+          <div class="form-grid" style="margin-top:26px">
+            <div class="field"><label for="f-name">Full Name <em>*</em></label><input id="f-name" name="name" autocomplete="name" required><span class="err" role="alert"></span></div>
+            <div class="field"><label for="f-phone">Mobile Number <em>*</em></label><input id="f-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile" required><span class="err" role="alert"></span></div>
+            <div class="field"><label for="f-email">Email Address</label><input id="f-email" name="email" type="email" autocomplete="email"><span class="err" role="alert"></span></div>
+            <div class="field"><label for="f-event">Event Type <em>*</em></label>
+              <select id="f-event" name="eventType" required>
+                <option value="">Select event</option>
+                <option>Wedding</option><option>Reception</option><option>Engagement</option><option>Haldi / Mehendi</option>
+                <option>Birthday</option><option>Naming Ceremony</option><option>Corporate Event</option><option>Conference</option>
+                <option>Seminar</option><option>Other</option>
+              </select><span class="err" role="alert"></span></div>
+            <div class="field"><label for="f-date">Preferred Event Date</label><input id="f-date" name="date" type="date"><span class="err" role="alert"></span></div>
+            <div class="field"><label for="f-guests">Number of Guests</label><input id="f-guests" name="guests" type="number" min="1" inputmode="numeric" placeholder="Approx."><span class="err" role="alert"></span></div>
+            <div class="field full"><label for="f-msg">Message / Requirements</label><textarea id="f-msg" name="message" placeholder="Décor, catering, rooms, timings or anything else you need…"></textarea></div>
+            <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          </div>
+          <div class="form-foot">
+            <small>Your details are only used to reply to your enquiry.</small>
+            <button class="btn btn-gold" type="submit">Submit Enquiry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+          <div class="form-msg" role="alert"></div>
+        </form>
+        <div class="success" id="enquiry-success" role="status" aria-live="polite">
+          <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h2 style="font-size:2.4rem">Thank you, <span class="gold-text" data-s-name></span>!</h2>
+          <p class="lead" style="margin-inline:auto">Your enquiry has been received. Our team will call you shortly to confirm availability and discuss your event.</p>
+          <p>For a faster reply, send the same details to us on WhatsApp.</p>
+          <div class="btn-row" style="justify-content:center;margin-top:20px">
+            <a class="btn btn-gold" data-s-wa target="_blank" rel="noopener">Send on WhatsApp</a>
+            <button class="btn btn-outline" type="button" data-s-again>New Enquiry</button>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <span class="eyebrow">Quick contact</span>
+        <div class="info-stack" data-render="contactInfo"></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section-alt" style="padding-top:clamp(60px,7vw,100px)">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">Find us</span><h2>Location & <span class="gold-text">directions</span></h2></div>
+      </div>
+      <div class="map-wrap reveal" data-render="map">
+        <iframe title="Map showing Nirmale Convention Hall, Aurad" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <div class="map-card">
+          <h3 data-bind="site.name">Nirmale Convention Hall</h3>
+          <p data-bind="site.address">75, Lidkar Colony, Aurad, Karnataka 585326</p>
+          <a class="btn btn-gold btn-sm" data-map-dir target="_blank" rel="noopener">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <img src="/uploads/photo-20.jpg" alt="" loading="lazy">
+    <div class="container">
+      <div class="cta-frame reveal">
+        <span class="eyebrow" style="justify-content:center">We'd love to hear from you</span>
+        <h2>Let's Plan Your Event <span class="gold-text">Together</span></h2>
+        <p class="lead">Popular wedding dates fill up fast. Reach out today to check availability, visit the hall and get all the booking information you need.</p>
+        <div class="btn-row" style="justify-content:center"><a class="btn btn-gold" data-href="tel">Call Now</a><a class="btn btn-outline" data-href="wa">WhatsApp</a><a class="btn btn-outline" data-href="mail">Email</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

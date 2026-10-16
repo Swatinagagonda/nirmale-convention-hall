@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /api/
+
+# Replace with your real domain after launch
+Sitemap: https://www.nirmaleconventionhall.in/sitemap.xml
