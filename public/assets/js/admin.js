@@ -243,14 +243,12 @@
           ${field('Short intro (Home page)', 'summary', m.summary, 'textarea', 'full" style="grid-column:1/-1')}
           ${field('Full description (About page)', 'bio', m.bio, 'textarea', 'full" style="grid-column:1/-1')}
           ${field('Quote', 'quote', m.quote, 'textarea', 'full" style="grid-column:1/-1')}
-          ${field('Key points (one per line)', 'highlights', (m.highlights || []).join('
-'), 'textarea', 'full" style="grid-column:1/-1')}
+          ${field('Key points (one per line)', 'highlights', (m.highlights || []).join('\n'), 'textarea', 'full" style="grid-column:1/-1')}
           <div><button class="btn btn-gold btn-sm">Save</button></div>
         </div></div></form>`).join('')}`;
     $$('.team-form', el).forEach(f => {
       const i = +f.dataset.i;
-      f.onsubmit = async e => { e.preventDefault(); const list = [...C.team]; const d = formData(f); d.highlights = d.highlights.split('
-').map(x => x.trim()).filter(Boolean); list[i] = { ...list[i], ...d }; try { await saveSection('team', list); } catch (err) { fail(err); } };
+      f.onsubmit = async e => { e.preventDefault(); const list = [...C.team]; const d = formData(f); d.highlights = d.highlights.split('\n').map(x => x.trim()).filter(Boolean); list[i] = { ...list[i], ...d }; try { await saveSection('team', list); } catch (err) { fail(err); } };
       $('[data-photo]', f).onclick = () => pickFile(async file => {
         try { const up = await uploadSingle(file); const list = [...C.team]; list[i] = { ...list[i], photo: up.src }; await saveSection('team', list, 'Photo updated'); RENDER.team(el); } catch (err) { fail(err); }
       });

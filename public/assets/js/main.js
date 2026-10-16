@@ -118,7 +118,7 @@
 
     const bar = document.createElement('div');
     bar.className = 'float-bar';
-    bar.innerHTML = `<a data-href="tel" aria-label="Call now">${I('phone')}Call Now</a><a class="wa" data-href="wa" target="_blank" rel="noopener" aria-label="WhatsApp">${I('wa')}WhatsApp</a><a class="book" href="contact.html#enquiry">${I('cal')}Book / Enquire</a>`;
+    bar.innerHTML = `<a class="book" href="contact.html#enquiry" data-label="Book / Enquire" aria-label="Book or enquire">${I('cal')}Book</a><a class="wa" data-href="wa" target="_blank" rel="noopener" data-label="WhatsApp us" aria-label="WhatsApp">${I('wa')}WhatsApp</a><a class="call" data-href="tel" data-label="Call ${esc(C.site.phone)}" aria-label="Call now">${I('phone')}Call</a>`;
     document.body.append(bar);
 
     const lb = document.createElement('div');
