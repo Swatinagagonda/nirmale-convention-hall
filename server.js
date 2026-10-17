@@ -291,7 +291,8 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/uploads', express.static(UPLOAD_DIR, { maxAge: '30d' }));
-app.use(express.static(PUBLIC_DIR, { extensions: ['html'], maxAge: '1h' }));
+// Pages, styles and scripts are re-checked on every visit so design updates show up immediately
+app.use(express.static(PUBLIC_DIR, { extensions: ['html'], maxAge: 0, setHeaders: res => res.setHeader('Cache-Control', 'no-cache') }));
 app.use((err, req, res, next) => {
   console.error(err.message);
   res.status(err.code === 'LIMIT_FILE_SIZE' ? 413 : 500).json({ error: err.code === 'LIMIT_FILE_SIZE' ? 'Image is larger than 8 MB.' : 'Something went wrong.' });
