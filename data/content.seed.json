@@ -9,7 +9,7 @@
     "whatsapp": "9880540333",
     "email": "Nirmaleconventiondemo@gmail.com",
     "mapQuery": "Nirmale Function Hall, 75 Lidkar Colony, Aurad, Karnataka 585326",
-    "capacity": "",
+    "capacity": "Up to 1500 guests",
     "hours": "Open all days · 9:00 AM – 9:00 PM for site visits",
     "googleRating": "5.0",
     "googleReviewsUrl": "https://www.google.com/search?q=Nirmale+Function+Hall+Aurad+reviews",
@@ -44,7 +44,8 @@
         "Transparent, honest pricing",
         "A respected name in Aurad"
       ],
-      "summary": "The founder and vision behind Nirmale Convention Hall – he built a grand, modern venue so families of Aurad can celebrate their biggest days close to home."
+      "summary": "The founder and vision behind Nirmale Convention Hall – he built a grand, modern venue so families of Aurad can celebrate their biggest days close to home.",
+      "photoPosition": "38% 30%"
     },
     {
       "id": "manager",
@@ -59,10 +60,15 @@
         "Décor, lighting & sound coordination",
         "On-site support on your event day"
       ],
-      "summary": "Manages the hall day to day and is your first point of contact – from site visits and checking dates to coordinating every arrangement on your event day."
+      "summary": "Manages the hall day to day and is your first point of contact – from site visits and checking dates to coordinating every arrangement on your event day.",
+      "photoPosition": "50% 30%"
     }
   ],
   "stats": [
+    {
+      "value": "1500",
+      "label": "Guest Capacity"
+    },
     {
       "value": "5.0",
       "label": "Google Rating"
@@ -74,10 +80,6 @@
     {
       "value": "9+",
       "label": "Types of Events"
-    },
-    {
-      "value": "30+",
-      "label": "Stage Décor Looks"
     }
   ],
   "events": [
@@ -137,6 +139,13 @@
     }
   ],
   "facilities": [
+    {
+      "key": "capacity",
+      "icon": "users",
+      "title": "Hall for 1500 Guests",
+      "text": "A spacious hall that comfortably hosts up to 1500 guests for grand weddings and receptions.",
+      "status": "available"
+    },
     {
       "key": "stage",
       "icon": "stage",

@@ -46,7 +46,8 @@
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-  const LOGO = `<svg class="brand-mark" viewBox="0 0 46 52" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3dc9c"/><stop offset=".5" stop-color="#d4af5f"/><stop offset="1" stop-color="#a8823a"/></linearGradient></defs><path d="M2 51V23a21 21 0 0 1 42 0v28z" fill="none" stroke="url(#lg)" stroke-width="1.4"/><path d="M6 51V24a17 17 0 0 1 34 0v27" fill="none" stroke="url(#lg)" stroke-width=".6" opacity=".6"/><text x="23" y="41" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="25" font-weight="500" fill="url(#lg)">N</text></svg>`;
+  const LOGO = `<svg class="brand-logo" viewBox="0 0 212 56" role="img" aria-label="Nirmale Convention Hall"><defs><linearGradient id="lgh" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="212" y2="56"><stop offset="0" stop-color="#f7e3a4"/><stop offset=".35" stop-color="#dcb560"/><stop offset=".65" stop-color="#b08a3e"/><stop offset="1" stop-color="#f0d38a"/></linearGradient></defs><text x="106" y="30" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-size="29" font-weight="600" textLength="208" lengthAdjust="spacingAndGlyphs" fill="url(#lgh)">NIRMALE</text><g stroke="url(#lgh)" stroke-width=".8"><path d="M2 44h20M190 44h20"/></g><path d="M24.5 44l1.5-1.5 1.5 1.5-1.5 1.5zM184.5 44l1.5-1.5 1.5 1.5-1.5 1.5z" fill="url(#lgh)"/><text x="106" y="47.8" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-size="10" font-weight="600" textLength="146" lengthAdjust="spacing" fill="url(#lgh)">CONVENTION HALL</text></svg>`;
+  const LOGO_STACKED = `<svg class="brand-logo-stacked" viewBox="0 0 260 178" role="img" aria-label="Nirmale Convention Hall"><defs><linearGradient id="lgs" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="260" y2="178"><stop offset="0" stop-color="#f7e3a4"/><stop offset=".35" stop-color="#dcb560"/><stop offset=".65" stop-color="#b08a3e"/><stop offset="1" stop-color="#f0d38a"/></linearGradient></defs><g transform="translate(130 36)"><g fill="none" stroke="url(#lgs)" stroke-linecap="round"><path stroke-width="3.2" d="M-24 34 C-34 30 -38 18 -33 6 C-31 16 -27 24 -21 27"/><path stroke-width="2.2" d="M-24 40 C-38 44 -52 38 -60 28 C-66 20 -76 20 -79 27 C-81 33 -74 36 -71 31"/><path stroke-width="1.4" d="M-36 22 C-46 14 -58 14 -64 20"/><path stroke-width="1.4" d="M-62 22 C-70 12 -84 14 -86 22 C-87 27 -81 29 -80 25"/><path stroke-width="1.2" d="M-58 36 C-70 44 -88 44 -100 38"/></g><path d="M-40 26 C-44 22 -44 17 -40 14 C-41 19 -39 23 -40 26 Z" fill="url(#lgs)"/><circle cx="-100" cy="38" r="1.6" fill="url(#lgs)"/><g transform="scale(-1 1)"><g fill="none" stroke="url(#lgs)" stroke-linecap="round"><path stroke-width="3.2" d="M-24 34 C-34 30 -38 18 -33 6 C-31 16 -27 24 -21 27"/><path stroke-width="2.2" d="M-24 40 C-38 44 -52 38 -60 28 C-66 20 -76 20 -79 27 C-81 33 -74 36 -71 31"/><path stroke-width="1.4" d="M-36 22 C-46 14 -58 14 -64 20"/><path stroke-width="1.4" d="M-62 22 C-70 12 -84 14 -86 22 C-87 27 -81 29 -80 25"/><path stroke-width="1.2" d="M-58 36 C-70 44 -88 44 -100 38"/></g><path d="M-40 26 C-44 22 -44 17 -40 14 C-41 19 -39 23 -40 26 Z" fill="url(#lgs)"/><circle cx="-100" cy="38" r="1.6" fill="url(#lgs)"/></g><g transform="translate(0 -17)"><path d="M-15 8 L-17 -8 L-8 -1 L0 -12 L8 -1 L17 -8 L15 8 Z" fill="url(#lgs)"/><rect x="-16" y="9.5" width="32" height="3.4" rx="1" fill="url(#lgs)"/><circle cx="-17.5" cy="-10" r="2.1" fill="url(#lgs)"/><circle cx="0" cy="-14.5" r="2.3" fill="url(#lgs)"/><circle cx="17.5" cy="-10" r="2.1" fill="url(#lgs)"/><circle cx="-7" cy="3.5" r="1.1" fill="#0a0907"/><circle cx="0" cy="2.5" r="1.3" fill="#0a0907"/><circle cx="7" cy="3.5" r="1.1" fill="#0a0907"/></g><path d="M-19 0 H19 V20 C19 33 10 40 0 45 C-10 40 -19 33 -19 20 Z" fill="#0a0907" stroke="url(#lgs)" stroke-width="2.4" stroke-linejoin="round"/><path d="M-14.5 4.5 H14.5 V20 C14.5 30 7.5 35.5 0 39.6 C-7.5 35.5 -14.5 30 -14.5 20 Z" fill="none" stroke="url(#lgs)" stroke-width=".9" opacity=".75"/><text x="0" y="29" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-size="25" font-weight="700" fill="url(#lgs)">N</text></g><path d="M22 86 H238" stroke="url(#lgs)" stroke-width="1"/><text x="130" y="124" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-size="33" font-weight="600" textLength="232" lengthAdjust="spacingAndGlyphs" fill="url(#lgs)">NIRMALE</text><text x="130" y="146" text-anchor="middle" font-family="Cinzel, Georgia, serif" font-size="13" font-weight="600" textLength="196" lengthAdjust="spacing" fill="url(#lgs)">CONVENTION HALL</text><g transform="translate(130 164)"><path d="M-96 0 H-16 M16 0 H96" stroke="url(#lgs)" stroke-width="1"/><path d="M0 -5 C4 -2 8 0 14 0 C8 0 4 2 0 5 C-4 2 -8 0 -14 0 C-8 0 -4 -2 0 -5 Z" fill="url(#lgs)"/><circle cx="0" cy="0" r="1.3" fill="#0a0907"/></g></svg>`;
 
   const PAGES = [['index.html', 'Home'], ['about.html', 'About'], ['events.html', 'Events'], ['facilities.html', 'Facilities'], ['gallery.html', 'Gallery'], ['contact.html', 'Booking & Contact']];
   const page = document.body.dataset.page || 'home';
@@ -72,7 +73,7 @@
     header.className = 'site-header' + (page === 'home' ? '' : ' solid');
     header.innerHTML = `
       <div class="header-inner">
-        <a class="brand" href="index.html" aria-label="Home">${LOGO}<span><span class="brand-name" data-bind="site.name">Nirmale Convention Hall</span><span class="brand-tag" data-bind="site.tagline">Convention & Celebrations</span></span></a>
+        <a class="brand" href="index.html" aria-label="Nirmale Convention Hall – Home">${LOGO}</a>
         <nav class="nav" id="site-nav" aria-label="Main">${nav}</nav>
         <div class="header-cta">
           <a class="header-phone" data-href="tel">${I('phone')}<span data-bind="site.phone">98805 40333</span></a>
@@ -91,7 +92,7 @@
       <div class="container">
         <div class="footer-grid">
           <div>
-            <a class="brand" href="index.html">${LOGO}<span><span class="brand-name" data-bind="site.name">Nirmale Convention Hall</span><span class="brand-tag" data-bind="site.tagline">Convention & Celebrations</span></span></a>
+            <a class="brand" href="index.html" aria-label="Nirmale Convention Hall – Home">${LOGO_STACKED}</a>
             <p style="margin-top:22px;max-width:40ch">A grand and welcoming venue in Aurad for weddings, receptions, engagements, birthdays, naming ceremonies, corporate and family functions.</p>
             <div class="socials" id="socials"></div>
           </div>
@@ -475,6 +476,7 @@
       '@context': 'https://schema.org', '@type': 'EventVenue', name: s.name, telephone: '+91' + digits(s.phone).slice(-10), email: s.email,
       address: { '@type': 'PostalAddress', streetAddress: '75, Lidkar Colony', addressLocality: 'Aurad', addressRegion: 'Karnataka', postalCode: '585326', addressCountry: 'IN' },
       image: location.origin + ((C.hero && C.hero.image) || ''), url: location.origin + '/',
+      maximumAttendeeCapacity: 1500,
       aggregateRating: s.googleRating ? { '@type': 'AggregateRating', ratingValue: s.googleRating, bestRating: '5' } : undefined
     };
     const tag = document.createElement('script'); tag.type = 'application/ld+json'; tag.textContent = JSON.stringify(ld);
@@ -490,6 +492,7 @@
   fetch('/api/content').then(r => r.ok ? r.json() : Promise.reject()).then(data => {
     C = Object.assign(C, data); C.site = Object.assign({}, C.site, data.site || {});
   }).catch(() => console.warn('Content API unavailable – showing defaults')).finally(() => {
+    $$('[data-crest]').forEach((el, i) => { el.innerHTML = LOGO_STACKED.split('lgs').join('crest' + i); });
     $$('[data-render]').forEach(el => { const fn = R[el.dataset.render]; if (fn) { try { fn(el); } catch (e) { console.error(e); } } });
     applyBindings();
     observeReveals();
