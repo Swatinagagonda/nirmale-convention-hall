@@ -1,0 +1,4 @@
+# Cloudflare Pages settings (free hosting). The site is the /public folder; /functions handles /api/*.
+name = "nirmale-convention-hall"
+pages_build_output_dir = "public"
+compatibility_date = "2025-01-01"

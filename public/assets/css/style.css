@@ -153,9 +153,9 @@ p { margin: 0 0 1em; color: var(--muted); }
 @keyframes cue { 0% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
 
 /* Page hero (inner pages) */
-.page-hero { position: relative; padding: calc(var(--header-h) + 90px) 0 90px; isolation: isolate; overflow: hidden; text-align: center; }
+.page-hero { position: relative; padding: calc(var(--header-h) + 90px) 0 50px; isolation: isolate; overflow: hidden; text-align: center; }
 .page-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
-.page-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10,9,7,.66), rgba(10,9,7,.42) 50%, var(--bg)); }
+.page-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10,9,7,.66) 0%, rgba(10,9,7,.42) 50%, rgba(10,9,7,.5) 88%, var(--bg) 100%); }
 .page-hero h1 { font-size: clamp(2.6rem, 5.5vw, 4.4rem); }
 .page-hero .lead { margin-inline: auto; color: #d8cebc; }
 .breadcrumb { display: flex; justify-content: center; gap: 10px; font-size: .85rem; color: var(--muted); margin-top: 20px; letter-spacing: .08em; }
@@ -633,3 +633,37 @@ p { margin: 0 0 1em; color: var(--muted); }
   .footer-contact { gap: 6px; }
   .event-num, .team-role, [data-variant=compact] .team-role { font-size: .75rem; }
 }
+
+/* Inner pages: consistent, tight gap between the hero banner and the first content */
+.page-hero + .section { padding-top: 40px; }
+@media (max-width: 760px) { .page-hero + .section { padding-top: 28px; } }
+.page-hero + .section .event-row:first-child { padding-top: 0; }
+
+/* Phones and small tablets: compact inner-page hero so the next heading shows on the first screen */
+@media (max-width: 768px) {
+  .page-hero { padding: calc(var(--header-h) + 24px) 0 24px; }
+  .page-hero .eyebrow { margin-bottom: 8px; font-size: .68rem; }
+  .page-hero h1 { font-size: 2rem; line-height: 1.15; margin-bottom: 10px; }
+  .page-hero .lead { font-size: .95rem; line-height: 1.55; margin-bottom: 0; }
+  .page-hero .breadcrumb { display: none; }
+  .page-hero::before { background: linear-gradient(180deg, rgba(10,9,7,.7) 0%, rgba(10,9,7,.5) 60%, rgba(10,9,7,.6) 90%, var(--bg) 100%); }
+  .page-hero + .section { padding-top: 24px; }
+  .page-hero .lead { line-height: 1.45; }
+  .page-hero h1 { margin-bottom: 8px; }
+  /* About: show the heading before the hall photo so it is on the first screen */
+  .page-hero + .section .split > .arch-frame { order: 2; }
+}
+
+/* Inner pages: banner fills the first screen (all devices); next section starts after scrolling */
+.page-hero { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; justify-content: center; padding: calc(var(--header-h) + 40px) 0 90px; }
+.page-hero > .container { width: min(var(--container), 100% - 40px); }
+.page-hero .scroll-cue { bottom: 32px; }
+@media (max-width: 768px) {
+  .page-hero { padding: calc(var(--header-h) + 24px) 0 96px; }
+  .page-hero h1 { font-size: 2.3rem; }
+  .page-hero .lead { font-size: 1rem; }
+  .page-hero .scroll-cue { bottom: 84px; }
+}
+.page-hero h1 { text-shadow: 0 3px 18px rgba(0,0,0,.8); }
+.page-hero h1 .gold-text { text-shadow: none; filter: drop-shadow(0 2px 8px rgba(0,0,0,.75)); }
+@media (max-width: 768px) { .page-hero .eyebrow { font-size: .74rem; } }

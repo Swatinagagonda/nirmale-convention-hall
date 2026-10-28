@@ -2,13 +2,13 @@
   "site": {
     "name": "Nirmale Convention Hall",
     "tagline": "Convention & Celebrations",
-    "location": "Aurad, Karnataka",
-    "address": "75, Lidkar Colony, Aurad, Karnataka 585326",
+    "location": "Aurad (B), Bidar, Karnataka",
+    "address": "75, Lidkar Colony, Aurad (B), Dist. Bidar, Karnataka 585326",
     "phone": "98805 40333",
     "altPhones": "90710 18252 / 08485 354152",
     "whatsapp": "9880540333",
     "email": "Nirmaleconventiondemo@gmail.com",
-    "mapQuery": "Nirmale Function Hall, 75 Lidkar Colony, Aurad, Karnataka 585326",
+    "mapQuery": "Nirmale Function Hall, 75 Lidkar Colony, Aurad, Bidar, Karnataka 585326",
     "capacity": "Up to 1500 guests",
     "hours": "Open all days · 9:00 AM – 9:00 PM for site visits",
     "googleRating": "5.0",
@@ -136,6 +136,18 @@
       "title": "Cultural & Social Events",
       "image": "/uploads/photo-30-t.jpg",
       "text": "Cultural programmes, community gatherings, pooja functions and award ceremonies."
+    },
+    {
+      "key": "shawlhalfsaree",
+      "title": "Shawl & Half Saree Ceremony",
+      "image": "/uploads/photo-28-t.jpg",
+      "text": "Hold a shawl ceremony, a half saree function, or both together."
+    },
+    {
+      "key": "nightparty",
+      "title": "Night Parties",
+      "image": "/uploads/photo-03-t.jpg",
+      "text": "Evening get-togethers and celebrations with festive lighting, music and room for your guests."
     }
   ],
   "facilities": [
@@ -235,6 +247,20 @@
       "icon": "access",
       "title": "Accessibility",
       "text": "Easy access for elders and guests with limited mobility.",
+      "status": "ask"
+    },
+    {
+      "key": "vip",
+      "icon": "vip",
+      "title": "VIP Facilities",
+      "text": "Special arrangements for VIP guests, including reserved seating and personal attention. Ask us for details.",
+      "status": "ask"
+    },
+    {
+      "key": "lift",
+      "icon": "lift",
+      "title": "Lift",
+      "text": "Easy access between floors for elders, families and guests with limited mobility.",
       "status": "ask"
     }
   ],

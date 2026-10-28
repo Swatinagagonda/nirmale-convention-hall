@@ -1,0 +1,10 @@
+# Copy to .dev.vars to run the Cloudflare version locally with `npm run cf:dev`.
+# On the live site, set the same names in Cloudflare → your Pages project → Settings → Variables and Secrets.
+SUPABASE_URL=https://xxxxxxxx.supabase.co
+SUPABASE_SERVICE_KEY=your-supabase-secret-key
+ADMIN_PASSWORD=choose-a-strong-password
+SESSION_SECRET=any-long-random-text
+
+# Optional – email every booking enquiry (free Resend account, resend.com)
+# RESEND_API_KEY=re_xxxxxxxx
+# ENQUIRY_TO=owner@example.com

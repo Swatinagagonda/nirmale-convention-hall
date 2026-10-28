@@ -1,6 +1,6 @@
 # Nirmale Convention Hall – Website
 
-A black & gold marketing website for **Nirmale Convention Hall, 75 Lidkar Colony, Aurad, Karnataka 585326**, with an admin panel so the owner and manager can manage photos, videos and content themselves.
+A black & gold marketing website for **Nirmale Convention Hall, 75 Lidkar Colony, Aurad (B), Dist. Bidar, Karnataka 585326**, with an admin panel so the owner and manager can manage photos, videos and content themselves.
 
 ## Pages
 | Page | File |
@@ -47,8 +47,35 @@ In the admin panel you can:
 Enquiries are always saved in the admin panel and the customer is offered a one-tap WhatsApp send.
 To also receive each enquiry by email, set `SMTP_USER` and `SMTP_PASS` (a Gmail App Password) – see `.env.example`.
 
-## Going live
-This is a Node.js app (needs a host that runs Node 18+ and keeps files on disk), for example:
+## Going live for free – Cloudflare Pages + Supabase
+The pages are served by **Cloudflare Pages** (free, fast everywhere, never sleeps). The `/api/*` routes run as
+Cloudflare Pages Functions ([functions/api/[[path]].js](functions/api/[[path]].js)) and keep content, enquiries,
+admin logins and new photos in **Supabase** (free). The photos already in `public/uploads/` stay on Cloudflare.
+
+1. **Supabase** – create a free project at https://supabase.com.
+   - SQL Editor → paste [supabase/schema.sql](supabase/schema.sql) → **Run**.
+   - Project Settings → API Keys: copy the **Project URL** and the **secret key** (`service_role`).
+   - Copy the current content into it (from this folder, in Git Bash):
+     `SUPABASE_URL=https://xxxx.supabase.co SUPABASE_SERVICE_KEY=... npm run supabase:import`
+2. **GitHub** – push this folder to your repository.
+3. **Cloudflare** – free account at https://dash.cloudflare.com → Workers & Pages → Create → Pages →
+   *Connect to Git* → choose the repository.
+   - Framework preset: **None**, Build command: *(leave empty)*, Build output directory: **public**.
+   - Settings → Variables and Secrets (type *Secret*): `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`,
+     `ADMIN_PASSWORD`, `SESSION_SECRET` (any long random text). Then **Retry deployment**.
+   - The site is live at `https://<project-name>.pages.dev`. Every push to GitHub redeploys it.
+4. **Keep Supabase awake** – free Supabase projects pause after a week with no activity. In GitHub →
+   Settings → Secrets and variables → Actions → *Variables*, add `SITE_URL` = your site address; the
+   [daily ping](.github/workflows/keep-supabase-awake.yml) then keeps it active.
+5. **Your own domain (later)** – Cloudflare Pages project → Custom domains → *Set up a domain*. If the domain is
+   bought at GoDaddy, change its nameservers to the two Cloudflare gives you; Cloudflare adds the DNS record and SSL.
+6. **Email for each enquiry (optional)** – free account at https://resend.com, then add `RESEND_API_KEY` and
+   `ENQUIRY_TO` (the owner's email) in Cloudflare.
+
+Test the Cloudflare version on your computer: copy `.dev.vars.example` to `.dev.vars`, fill it in, run `npm run cf:dev`.
+
+## Other hosting
+The Node.js server (`npm start`) also runs on any host with Node 18+ that keeps files on disk, for example:
 - **Hostinger / any VPS** – upload the folder, `npm install`, run `npm start` with PM2.
 - **Render / Railway** – deploy from GitHub; add a **persistent disk** and set `DATA_DIR` and `UPLOAD_DIR` to it so photos and edits survive restarts.
 

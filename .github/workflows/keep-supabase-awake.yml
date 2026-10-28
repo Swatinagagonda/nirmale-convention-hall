@@ -1,0 +1,18 @@
+# Supabase's free plan pauses a database after a week without activity.
+# This pings the live site once a day so it stays awake, even in quiet weeks.
+# Setup: GitHub repo → Settings → Secrets and variables → Actions → Variables → New variable
+#        SITE_URL = https://nirmale-convention-hall.pages.dev   (or your own domain later)
+name: Keep Supabase awake
+
+on:
+  schedule:
+    - cron: '30 3 * * *'   # every day, 9:00 AM India time
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    if: ${{ vars.SITE_URL != '' }}
+    steps:
+      - name: Ping /api/health
+        run: curl --fail --silent --show-error --retry 3 "${{ vars.SITE_URL }}/api/health"

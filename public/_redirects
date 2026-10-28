@@ -1,0 +1,6 @@
+/admin/        /admin  301
+/admin/login   /admin  301
+/login         /admin  301
+/admin-login   /admin  301
+/dashboard     /admin  301
+/wp-admin      /admin  301

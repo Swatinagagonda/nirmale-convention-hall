@@ -40,6 +40,8 @@
     google: '<path d="M21.8 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.5a4.7 4.7 0 0 1-2 3.1v2.6h3.3c1.9-1.8 3-4.4 3-7.5z"/><path d="M12 22c2.7 0 5-.9 6.8-2.4l-3.3-2.6c-.9.6-2.1 1-3.5 1-2.7 0-5-1.8-5.8-4.3H2.8v2.7A10 10 0 0 0 12 22z"/><path d="M6.2 13.7a6 6 0 0 1 0-3.4V7.6H2.8a10 10 0 0 0 0 8.8z"/><path d="M12 6c1.5 0 2.9.5 4 1.5l3-3A10 10 0 0 0 2.8 7.6l3.4 2.7C7 7.8 9.3 6 12 6z"/>',
     direction: '<path d="m3 11 19-9-9 19-2-8z"/>',
     building: '<path d="M3 21h18M5 21V5l7-3 7 3v16M9 9h1M14 9h1M9 13h1M14 13h1M10 21v-4h4v4"/>',
+    vip: '<path d="M3 18h18M4 18 3 7l5 4 4-7 4 7 5-4-1 11"/><circle cx="12" cy="14" r="1.2"/>',
+    lift: '<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 2v20M8.5 8 7 10h3zM15.5 10 17 8h-3z"/>',
     lock: '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>'
   };
   const I = (n, cls = '') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n] || P.sparkle}</svg>`;
@@ -55,9 +57,9 @@
 
   // Default content so the page still renders if the API is unavailable
   let C = { site: {
-    name: 'Nirmale Convention Hall', tagline: 'Convention & Celebrations', address: '75, Lidkar Colony, Aurad, Karnataka 585326',
+    name: 'Nirmale Convention Hall', tagline: 'Convention & Celebrations', address: '75, Lidkar Colony, Aurad (B), Dist. Bidar, Karnataka 585326',
     phone: '98805 40333', whatsapp: '9880540333', email: 'Nirmaleconventiondemo@gmail.com', googleRating: '5.0',
-    mapQuery: 'Nirmale Function Hall, 75 Lidkar Colony, Aurad, Karnataka 585326' } };
+    mapQuery: 'Nirmale Function Hall, 75 Lidkar Colony, Aurad, Bidar, Karnataka 585326' } };
 
   const digits = s => String(s || '').replace(/\D/g, '');
   const tel = () => 'tel:+91' + digits(C.site.phone).replace(/^(91|0)/, '').slice(-10);
@@ -106,7 +108,7 @@
               <div>${I('phone')}<p><a data-href="tel" data-bind="site.phone">98805 40333</a><br><span data-bind="site.altPhones"></span></p></div>
               <div>${I('wa')}<a data-href="wa">WhatsApp: Message us</a></div>
               <div>${I('mail')}<a data-href="mail" data-bind="site.email">Nirmaleconventiondemo@gmail.com</a></div>
-              <div>${I('pin')}<a data-href="map" data-bind="site.address">75, Lidkar Colony, Aurad, Karnataka 585326</a></div>
+              <div>${I('pin')}<a data-href="map" data-bind="site.address">75, Lidkar Colony, Aurad (B), Dist. Bidar, Karnataka 585326</a></div>
             </div>
           </div>
         </div>
@@ -171,8 +173,16 @@
   function observeReveals(root = document) {
     if (!('IntersectionObserver' in window)) { $$('.reveal', root).forEach(e => e.classList.add('in')); return; }
     io = io || new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: .08 });
-    $$('.reveal:not(.in)', root).forEach(e => io.observe(e));
+    $$('.reveal:not(.in)', root).forEach(e => {
+      const r = e.getBoundingClientRect();
+      if (!userScrolled && r.top < innerHeight && r.bottom > 0) {
+        e.style.transition = 'none'; e.classList.add('in');
+        requestAnimationFrame(() => requestAnimationFrame(() => { e.style.transition = ''; }));
+      } else io.observe(e);
+    });
   }
+  let userScrolled = false;
+  addEventListener('scroll', () => { if (scrollY > 10) userScrolled = true; }, { passive: true });
 
   // ---------- Lightbox ----------
   let lbList = [], lbIdx = 0, lastFocus = null;
@@ -257,7 +267,7 @@
   };
 
   R.eventsPreview = el => {
-    el.innerHTML = (C.events || []).slice(0, 8).map((e, i) => `
+    el.innerHTML = (C.events || []).map((e, i) => `
       <a class="event-card reveal reveal-d${i % 4}" href="events.html#${esc(e.key)}">
         <img src="${esc(e.image)}" alt="${esc(e.title)} at ${esc(C.site.name)}" loading="lazy">
         <span class="event-num">${String(i + 1).padStart(2, '0')}</span>
@@ -274,7 +284,9 @@
     naming: ['Naming ceremony', 'Cradle ceremony', 'Baby shower', 'Seemantham'],
     corporate: ['Corporate meetings', 'Product launches', 'Company functions', 'Annual events'],
     conferences: ['Conferences', 'Seminars', 'Workshops', 'Training programmes'],
-    cultural: ['Cultural programmes', 'Community events', 'Award ceremonies', 'Pooja functions']
+    cultural: ['Cultural programmes', 'Community events', 'Award ceremonies', 'Pooja functions'],
+    shawlhalfsaree: ['Shawl ceremony', 'Half saree', 'Or both together', 'Family rituals'],
+    nightparty: ['Evening parties', 'Festive lighting', 'Music', 'Get-togethers']
   };
   R.eventsFull = el => {
     el.innerHTML = (C.events || []).map((e, i) => `
@@ -294,7 +306,10 @@
 
   R.facilities = el => {
     const limit = Number(el.dataset.limit) || 99;
-    const list = (C.facilities || []).filter(f => f.status !== 'hidden').slice(0, limit);
+    const all = (C.facilities || []).filter(f => f.status !== 'hidden');
+    // Home preview: always include VIP Facilities, keeping the total at the limit
+    const pinned = el.dataset.limit ? all.filter(f => f.key === 'vip') : [];
+    const list = all.filter(f => !pinned.includes(f)).slice(0, limit - pinned.length).concat(pinned);
     el.innerHTML = list.map((f, i) => `
       <div class="fac reveal reveal-d${i % 4}">
         <div class="fac-icon">${I(f.icon)}</div>
@@ -416,7 +431,7 @@
     const params = new URLSearchParams(location.search);
     const ev = params.get('event');
     if (ev) {
-      const map = { 'Wedding Receptions': 'Reception', 'Weddings': 'Wedding', 'Engagements': 'Engagement', 'Birthday Celebrations': 'Birthday', 'Corporate Events': 'Corporate Event', 'Conferences & Seminars': 'Conference', 'Haldi & Mehendi': 'Haldi / Mehendi', 'Naming Ceremonies': 'Naming Ceremony' };
+      const map = { 'Wedding Receptions': 'Reception', 'Weddings': 'Wedding', 'Engagements': 'Engagement', 'Birthday Celebrations': 'Birthday', 'Corporate Events': 'Corporate Event', 'Conferences & Seminars': 'Conference', 'Haldi & Mehendi': 'Haldi / Mehendi', 'Naming Ceremonies': 'Naming Ceremony', 'Shawl & Half Saree Ceremony': 'Shawl & Half Saree (both)', 'Night Parties': 'Night Party' };
       const v = map[ev] || 'Other'; const sel = form.eventType; if ([...sel.options].some(o => o.value === v)) sel.value = v;
     }
     const today = new Date(); today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
@@ -474,7 +489,7 @@
     const s = C.site;
     const ld = {
       '@context': 'https://schema.org', '@type': 'EventVenue', name: s.name, telephone: '+91' + digits(s.phone).slice(-10), email: s.email,
-      address: { '@type': 'PostalAddress', streetAddress: '75, Lidkar Colony', addressLocality: 'Aurad', addressRegion: 'Karnataka', postalCode: '585326', addressCountry: 'IN' },
+      address: { '@type': 'PostalAddress', streetAddress: '75, Lidkar Colony', addressLocality: 'Aurad (B), Bidar', addressRegion: 'Karnataka', postalCode: '585326', addressCountry: 'IN' },
       image: location.origin + ((C.hero && C.hero.image) || ''), url: location.origin + '/',
       maximumAttendeeCapacity: 1500,
       aggregateRating: s.googleRating ? { '@type': 'AggregateRating', ratingValue: s.googleRating, bestRating: '5' } : undefined
