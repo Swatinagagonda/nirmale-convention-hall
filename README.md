@@ -74,10 +74,9 @@ admin logins and new photos in **Supabase** (free). The photos already in `publi
 
 Test the Cloudflare version on your computer: copy `.dev.vars.example` to `.dev.vars`, fill it in, run `npm run cf:dev`.
 
-## Other hosting
-The Node.js server (`npm start`) also runs on any host with Node 18+ that keeps files on disk, for example:
-- **Hostinger / any VPS** – upload the folder, `npm install`, run `npm start` with PM2.
-- **Render / Railway** – deploy from GitHub; add a **persistent disk** and set `DATA_DIR` and `UPLOAD_DIR` to it so photos and edits survive restarts.
+## Hosting
+The live site is on **Cloudflare Pages** (above). It is not hosted on Render; an old Render copy at nirmale-convention-hall.onrender.com is outdated and should be deleted from the Render dashboard.
+`npm start` runs the Node.js server for local testing on http://localhost:3000.
 
 When you add your own domain, replace `nirmale-convention-hall.pages.dev` in `public/robots.txt` and `public/sitemap.xml` with it.
 
