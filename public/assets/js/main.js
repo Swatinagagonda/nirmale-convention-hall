@@ -375,7 +375,7 @@
           ${hl.length ? `<ul class="team-hl">${hl.map(h => `<li>${I('check')}${esc(h)}</li>`).join('')}</ul>` : ''}
           ${!compact && t.quote ? `<p class="team-quote">“${esc(t.quote)}”</p>` : ''}
           <div class="team-actions">
-            <a class="btn btn-gold btn-sm" href="${tel(phone)}">${I('phone')} Call ${esc(phone)}</a>
+            <a class="btn btn-gold btn-sm" href="${tel(phone)}">${I('phone')} Call</a>
             <a class="btn btn-outline btn-sm" href="${wa(`Hello ${t.name}, I would like to enquire about booking ${C.site.name}.`, whatsapp)}" target="_blank" rel="noopener">${I('wa')} WhatsApp ${esc(first)}</a>
           </div>
         </div>
