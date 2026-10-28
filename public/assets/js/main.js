@@ -58,7 +58,7 @@
   // Default content so the page still renders if the API is unavailable
   let C = { site: {
     name: 'Nirmale Convention Hall', tagline: 'Convention & Celebrations', address: 'NH 161A, Bidar Road, Opposite to HP Petrol Bunk, Aurad (B)',
-    phone: '98805 40333', whatsapp: '9880540333', email: 'Nirmaleconventiondemo@gmail.com', googleRating: '5.0',
+    phone: '98805 40333', whatsapp: '9880540333', email: 'nirmaleconventionhall@gmail.com', googleRating: '5.0',
     mapQuery: 'Nirmale Function Hall, NH 161A, Bidar Road, Aurad, Karnataka 585326' } };
 
   const digits = s => String(s || '').replace(/\D/g, '');
@@ -107,7 +107,7 @@
             <div class="footer-contact">
               <div>${I('phone')}<p><a data-href="tel" data-bind="site.phone">98805 40333</a><br><span data-bind="site.altPhones"></span></p></div>
               <div>${I('wa')}<a data-href="wa">WhatsApp: Message us</a></div>
-              <div>${I('mail')}<a data-href="mail" data-bind="site.email">Nirmaleconventiondemo@gmail.com</a></div>
+              <div>${I('mail')}<a data-href="mail" data-bind="site.email">nirmaleconventionhall@gmail.com</a></div>
               <div>${I('pin')}<a data-href="map" data-bind="site.address">NH 161A, Bidar Road, Opposite to HP Petrol Bunk, Aurad (B)</a></div>
             </div>
           </div>
