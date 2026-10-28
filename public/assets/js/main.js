@@ -62,8 +62,8 @@
     mapQuery: 'Nirmale Function Hall, 75 Lidkar Colony, Aurad, Bidar, Karnataka 585326' } };
 
   const digits = s => String(s || '').replace(/\D/g, '');
-  const tel = () => 'tel:+91' + digits(C.site.phone).replace(/^(91|0)/, '').slice(-10);
-  const wa = (text) => 'https://wa.me/91' + digits(C.site.whatsapp || C.site.phone).replace(/^(91|0)/, '').slice(-10) +
+  const tel = num => 'tel:+91' + digits(num || C.site.phone).replace(/^(91|0)/, '').slice(-10);
+  const wa = (text, num) => 'https://wa.me/91' + digits(num || C.site.whatsapp || C.site.phone).replace(/^(91|0)/, '').slice(-10) +
     '?text=' + encodeURIComponent(text || `Hello ${C.site.name}, I would like to enquire about booking the hall.`);
   const mail = () => 'mailto:' + C.site.email + '?subject=' + encodeURIComponent('Booking enquiry – ' + C.site.name);
   const mapLink = () => 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(C.site.mapQuery || C.site.address);
@@ -362,6 +362,9 @@
     el.innerHTML = (C.team || []).map((t, i) => {
       const first = t.name.replace(/^(Mr|Mrs|Ms|Dr)\.?\s+/i, '').split(' ')[0];
       const hl = (t.highlights || []).filter(Boolean);
+      // Each person can have their own numbers (Admin → Owner & Manager); otherwise the hall's main number is used
+      const phone = t.phone || C.site.phone;
+      const whatsapp = t.whatsapp || t.phone;
       return `
       <article class="team-card reveal reveal-d${i}">
         <div class="team-photo"><img src="${esc(t.photo)}" alt="${esc(t.name)}, ${esc(t.role)} of ${esc(C.site.name)}" loading="lazy"></div>
@@ -372,8 +375,8 @@
           ${hl.length ? `<ul class="team-hl">${hl.map(h => `<li>${I('check')}${esc(h)}</li>`).join('')}</ul>` : ''}
           ${!compact && t.quote ? `<p class="team-quote">“${esc(t.quote)}”</p>` : ''}
           <div class="team-actions">
-            <a class="btn btn-gold btn-sm" href="${tel()}">${I('phone')} Call</a>
-            <a class="btn btn-outline btn-sm" href="${wa(`Hello ${t.name}, I would like to enquire about booking ${C.site.name}.`)}" target="_blank" rel="noopener">${I('wa')} WhatsApp ${esc(first)}</a>
+            <a class="btn btn-gold btn-sm" href="${tel(phone)}">${I('phone')} Call ${esc(phone)}</a>
+            <a class="btn btn-outline btn-sm" href="${wa(`Hello ${t.name}, I would like to enquire about booking ${C.site.name}.`, whatsapp)}" target="_blank" rel="noopener">${I('wa')} WhatsApp ${esc(first)}</a>
           </div>
         </div>
       </article>`;

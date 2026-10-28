@@ -240,6 +240,8 @@
         <div><img src="${esc(m.photo)}" alt=""><button type="button" class="btn btn-outline btn-sm" data-photo style="width:100%;margin-top:10px">Change Photo</button></div>
         <div class="row" style="grid-template-columns:1fr 1fr">
           ${field('Name', 'name', m.name)}${field('Role', 'role', m.role)}
+          ${field('Mobile number (Call button)', 'phone', m.phone, 'tel')}${field('WhatsApp number', 'whatsapp', m.whatsapp, 'tel')}
+          <p class="hint" style="grid-column:1/-1;margin:-4px 0 0">Leave a number empty to use the hall's main number from Business Info. If WhatsApp is empty, the mobile number is used.</p>
           ${field('Short intro (Home page)', 'summary', m.summary, 'textarea', 'full" style="grid-column:1/-1')}
           ${field('Full description (About page)', 'bio', m.bio, 'textarea', 'full" style="grid-column:1/-1')}
           ${field('Quote', 'quote', m.quote, 'textarea', 'full" style="grid-column:1/-1')}
