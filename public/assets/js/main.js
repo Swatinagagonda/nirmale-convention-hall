@@ -57,9 +57,9 @@
 
   // Default content so the page still renders if the API is unavailable
   let C = { site: {
-    name: 'Nirmale Convention Hall', tagline: 'Convention & Celebrations', address: '75, Lidkar Colony, Aurad (B), Dist. Bidar, Karnataka 585326',
+    name: 'Nirmale Convention Hall', tagline: 'Convention & Celebrations', address: 'NH 161A, Bidar Road, Opposite to HP Petrol Bunk, Aurad (B)',
     phone: '98805 40333', whatsapp: '9880540333', email: 'Nirmaleconventiondemo@gmail.com', googleRating: '5.0',
-    mapQuery: 'Nirmale Function Hall, 75 Lidkar Colony, Aurad, Bidar, Karnataka 585326' } };
+    mapQuery: 'Nirmale Function Hall, NH 161A, Bidar Road, Aurad, Karnataka 585326' } };
 
   const digits = s => String(s || '').replace(/\D/g, '');
   const tel = num => 'tel:+91' + digits(num || C.site.phone).replace(/^(91|0)/, '').slice(-10);
@@ -108,7 +108,7 @@
               <div>${I('phone')}<p><a data-href="tel" data-bind="site.phone">98805 40333</a><br><span data-bind="site.altPhones"></span></p></div>
               <div>${I('wa')}<a data-href="wa">WhatsApp: Message us</a></div>
               <div>${I('mail')}<a data-href="mail" data-bind="site.email">Nirmaleconventiondemo@gmail.com</a></div>
-              <div>${I('pin')}<a data-href="map" data-bind="site.address">75, Lidkar Colony, Aurad (B), Dist. Bidar, Karnataka 585326</a></div>
+              <div>${I('pin')}<a data-href="map" data-bind="site.address">NH 161A, Bidar Road, Opposite to HP Petrol Bunk, Aurad (B)</a></div>
             </div>
           </div>
         </div>
@@ -492,7 +492,7 @@
     const s = C.site;
     const ld = {
       '@context': 'https://schema.org', '@type': 'EventVenue', name: s.name, telephone: '+91' + digits(s.phone).slice(-10), email: s.email,
-      address: { '@type': 'PostalAddress', streetAddress: '75, Lidkar Colony', addressLocality: 'Aurad (B), Bidar', addressRegion: 'Karnataka', postalCode: '585326', addressCountry: 'IN' },
+      address: { '@type': 'PostalAddress', streetAddress: 'NH 161A, Bidar Road, Opposite to HP Petrol Bunk', addressLocality: 'Aurad (B), Bidar', addressRegion: 'Karnataka', postalCode: '585326', addressCountry: 'IN' },
       image: location.origin + ((C.hero && C.hero.image) || ''), url: location.origin + '/',
       maximumAttendeeCapacity: 1500,
       aggregateRating: s.googleRating ? { '@type': 'AggregateRating', ratingValue: s.googleRating, bestRating: '5' } : undefined

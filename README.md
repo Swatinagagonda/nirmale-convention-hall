@@ -1,6 +1,6 @@
 # Nirmale Convention Hall – Website
 
-A black & gold marketing website for **Nirmale Convention Hall, 75 Lidkar Colony, Aurad (B), Dist. Bidar, Karnataka 585326**, with an admin panel so the owner and manager can manage photos, videos and content themselves.
+A black & gold marketing website for **Nirmale Convention Hall, NH 161A, Bidar Road, Opposite to HP Petrol Bunk, Aurad (B)**, with an admin panel so the owner and manager can manage photos, videos and content themselves.
 
 ## Pages
 | Page | File |
