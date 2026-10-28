@@ -66,6 +66,7 @@
     .progress { height: 4px; background: var(--line); border-radius: 4px; overflow: hidden; margin-top: 14px; display: none; }
     .progress div { height: 100%; width: 0; background: var(--gold-grad); transition: width .2s; }
     .hint { font-size: .85rem; color: var(--muted-2); }
+    .qr-url { overflow-wrap: anywhere; margin: 0 0 14px; }
     .mobile-tabs { display: none; }
     @media (max-width: 860px) {
       .admin-shell { grid-template-columns: 1fr; }
@@ -116,6 +117,7 @@
 </div>
 
 <div class="toast" id="toast" role="status"></div>
+<script src="assets/js/vendor/qrcode-generator.js" defer></script>
 <script src="assets/js/admin.js" defer></script>
 </body>
 </html>

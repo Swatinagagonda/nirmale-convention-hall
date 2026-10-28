@@ -62,7 +62,7 @@
   // ---------- tabs ----------
   const TABS = [
     ['photos', 'Photo Gallery'], ['enquiries', 'Enquiries'], ['videos', 'Videos'], ['team', 'Owner & Manager'],
-    ['info', 'Business Info'], ['events', 'Events'], ['facilities', 'Facilities'], ['reviews', 'Reviews & Stats'], ['account', 'Password']
+    ['info', 'Business Info'], ['qr', 'QR Codes'], ['events', 'Events'], ['facilities', 'Facilities'], ['reviews', 'Reviews & Stats'], ['account', 'Password']
   ];
   function buildTabs() {
     const html = TABS.map(([k, l]) => `<button class="tab-btn" data-tab="${k}">${l}${k === 'enquiries' ? '<span class="badge" data-new hidden></span>' : ''}</button>`).join('');
@@ -257,6 +257,74 @@
     });
   };
 
+  // ---------- QR codes (website + location) ----------
+  // Drawn in the browser from Business Info, so they always match the current links; nothing depends on an outside QR service.
+  const qrLinks = () => {
+    const s = C.site || {};
+    return [
+      { key: 'website', title: 'Website', caption: 'Scan to visit our website', url: s.siteUrl || location.origin + '/' },
+      { key: 'location', title: 'Location', caption: 'Scan for directions to the hall',
+        url: s.mapUrl || 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(s.mapQuery || s.address || s.name || '') }
+    ];
+  };
+  function qrMatrix(text) {
+    const q = qrcode(0, 'Q'); // level Q still scans if part of a printed code gets scratched or dirty
+    q.addData(unescape(encodeURIComponent(text))); q.make();
+    return q;
+  }
+  // Printable card: QR on white with the hall name and a caption underneath
+  function qrCard(link) {
+    const q = qrMatrix(link.url), n = q.getModuleCount();
+    const W = 1080, cell = Math.floor((W - 160) / (n + 8)), size = cell * (n + 8), pad = (W - size) / 2;
+    const c = document.createElement('canvas'); c.width = W; c.height = size + pad + 240;
+    const g = c.getContext('2d');
+    g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height);
+    g.fillStyle = '#0a0907';
+    for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (q.isDark(r, k)) g.fillRect(pad + (k + 4) * cell, pad + (r + 4) * cell, cell, cell);
+    g.textAlign = 'center';
+    g.font = '600 64px "Cormorant Garamond", Georgia, serif'; g.fillText((C.site && C.site.name) || 'Nirmale Convention Hall', W / 2, size + pad + 80);
+    g.fillStyle = '#8a6d2f'; g.font = '500 40px Jost, Arial, sans-serif'; g.fillText(link.caption, W / 2, size + pad + 150);
+    return c;
+  }
+  const canvasBlob = c => new Promise(r => c.toBlob(r, 'image/png'));
+  RENDER.qr = el => {
+    const links = qrLinks();
+    el.innerHTML = `<h1>QR Codes</h1><p>Use these on visiting cards, banners, invitation cards and WhatsApp. They are made from the links in <b>Business Info</b>.</p>
+      <div class="row" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">${links.map(l => `
+        <div class="box qr-box" data-qr="${l.key}"><h3>${l.title}</h3>
+          <div class="qr-img"></div>
+          <p class="hint qr-url">${esc(l.url)}</p>
+          <div class="btn-row" style="gap:10px">
+            <button class="btn btn-gold btn-sm" data-act="download">Download</button>
+            <button class="btn btn-outline btn-sm" data-act="share">Share</button>
+            <button class="btn btn-outline btn-sm" data-act="copy">Copy Link</button>
+          </div></div>`).join('')}</div>
+      <div class="box"><h3>Keeping them working for years</h3>
+        <p class="hint" style="margin:0">A printed QR code keeps working as long as its link works. When you connect your own domain, change <b>Website address</b> in Business Info first, then download the website QR again before printing. For the location, paste the hall's own link from Google Maps (open the hall in Google Maps → Share → Copy link) into <b>Google Maps link</b> in Business Info.</p></div>`;
+    links.forEach(l => {
+      const box = $(`[data-qr="${l.key}"]`, el), card = qrCard(l);
+      card.style.cssText = 'width:100%;max-width:300px;height:auto;border-radius:12px;display:block;margin:6px auto 12px';
+      $('.qr-img', box).append(card);
+      const file = async () => new File([await canvasBlob(card)], `nirmale-${l.key}-qr.png`, { type: 'image/png' });
+      $('[data-act="download"]', box).onclick = async () => {
+        const a = document.createElement('a'); a.href = URL.createObjectURL(await file()); a.download = `nirmale-${l.key}-qr.png`; a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+      };
+      $('[data-act="copy"]', box).onclick = async () => {
+        try { await navigator.clipboard.writeText(l.url); toast('Link copied ✓'); } catch { toast('Could not copy – select the link and copy it', true); }
+      };
+      $('[data-act="share"]', box).onclick = async () => {
+        const text = `${(C.site && C.site.name) || 'Nirmale Convention Hall'} – ${l.title}`;
+        try {
+          const f = await file();
+          if (navigator.canShare && navigator.canShare({ files: [f] })) await navigator.share({ files: [f], title: text, text: text + '\n' + l.url });
+          else if (navigator.share) await navigator.share({ title: text, text, url: l.url });
+          else { await navigator.clipboard.writeText(l.url); toast('Sharing is not supported here – link copied instead'); }
+        } catch (err) { if (err.name !== 'AbortError') fail(err); }
+      };
+    });
+  };
+
   // ---------- Business info ----------
   RENDER.info = el => {
     const s = C.site || {}, h = C.hero || {}, a = C.about || {};
@@ -266,6 +334,7 @@
         ${field('Main phone', 'phone', s.phone)}${field('Other phones', 'altPhones', s.altPhones)}
         ${field('WhatsApp number', 'whatsapp', s.whatsapp)}${field('Email', 'email', s.email, 'email')}
         ${field('Full address', 'address', s.address)}${field('Google Maps search text', 'mapQuery', s.mapQuery)}
+        ${field('Website address (for QR code)', 'siteUrl', s.siteUrl, 'url')}${field('Google Maps link (for QR code and directions)', 'mapUrl', s.mapUrl, 'url')}
         ${field('Seating capacity (shown on About)', 'capacity', s.capacity)}${field('Visiting hours', 'hours', s.hours)}
         ${field('Google rating', 'googleRating', s.googleRating)}${field('Google reviews link', 'googleReviewsUrl', s.googleReviewsUrl, 'url')}
         ${field('Instagram link', 'instagram', s.instagram, 'url')}${field('Facebook link', 'facebook', s.facebook, 'url')}${field('YouTube channel link', 'youtube', s.youtube, 'url')}

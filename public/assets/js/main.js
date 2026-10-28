@@ -66,7 +66,7 @@
   const wa = (text, num) => 'https://wa.me/91' + digits(num || C.site.whatsapp || C.site.phone).replace(/^(91|0)/, '').slice(-10) +
     '?text=' + encodeURIComponent(text || `Hello ${C.site.name}, I would like to enquire about booking the hall.`);
   const mail = () => 'mailto:' + C.site.email + '?subject=' + encodeURIComponent('Booking enquiry – ' + C.site.name);
-  const mapLink = () => 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(C.site.mapQuery || C.site.address);
+  const mapLink = () => C.site.mapUrl || 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(C.site.mapQuery || C.site.address);
 
   // ---------- Chrome: header, footer, floating bar, lightbox ----------
   function renderChrome() {
