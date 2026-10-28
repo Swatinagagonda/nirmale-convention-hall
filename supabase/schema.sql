@@ -19,6 +19,8 @@ create index if not exists enquiries_created_at on public.enquiries (created_at 
 -- Lock both tables: only the website's secret key (used by Cloudflare) can read or write them
 alter table public.kv enable row level security;
 alter table public.enquiries enable row level security;
+revoke all on public.kv, public.enquiries from anon, authenticated;
+grant select, insert, update, delete on public.kv, public.enquiries to service_role;
 
 -- Public bucket for photos uploaded from the admin panel (max 8 MB, images only)
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)

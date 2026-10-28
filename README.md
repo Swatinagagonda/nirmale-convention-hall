@@ -56,7 +56,7 @@ admin logins and new photos in **Supabase** (free). The photos already in `publi
    - SQL Editor → paste [supabase/schema.sql](supabase/schema.sql) → **Run**.
    - Project Settings → API Keys: copy the **Project URL** and the **secret key** (`service_role`).
    - Copy the current content into it (from this folder, in Git Bash):
-     `SUPABASE_URL=https://xxxx.supabase.co SUPABASE_SERVICE_KEY=... npm run supabase:import`
+     copy `.dev.vars.example` to `.dev.vars`, fill in the two Supabase values, then run `npm run supabase:import`
 2. **GitHub** – push this folder to your repository.
 3. **Cloudflare** – free account at https://dash.cloudflare.com → Workers & Pages → Create → Pages →
    *Connect to Git* → choose the repository.

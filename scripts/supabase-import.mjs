@@ -1,11 +1,16 @@
 // Copies the current site content (and any saved enquiries) from data/ into Supabase.
-// Run once after supabase/schema.sql:
-//   SUPABASE_URL=https://xxxx.supabase.co SUPABASE_SERVICE_KEY=... npm run supabase:import
+// Run once after supabase/schema.sql:  npm run supabase:import
+// Reads SUPABASE_URL and SUPABASE_SERVICE_KEY from .dev.vars (or from the environment).
 // Admin logins are not copied – they are created on the first login from the ADMIN_PASSWORD setting.
 
 import { readFileSync, existsSync } from 'node:fs';
 
-const { SUPABASE_URL, SUPABASE_SERVICE_KEY: key } = process.env;
+const devVars = existsSync('.dev.vars')
+  ? Object.fromEntries(readFileSync('.dev.vars', 'utf8').split(/\r?\n/)
+      .map(l => l.match(/^\s*([A-Z_]+)\s*=\s*(.*?)\s*$/)).filter(Boolean).map(m => [m[1], m[2].replace(/^["']|["']$/g, '')]))
+  : {};
+const SUPABASE_URL = process.env.SUPABASE_URL || devVars.SUPABASE_URL;
+const key = process.env.SUPABASE_SERVICE_KEY || devVars.SUPABASE_SERVICE_KEY;
 if (!SUPABASE_URL || !key) {
   console.error('Set SUPABASE_URL and SUPABASE_SERVICE_KEY first.');
   process.exit(1);
