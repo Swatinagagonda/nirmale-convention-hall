@@ -79,7 +79,7 @@ The Node.js server (`npm start`) also runs on any host with Node 18+ that keeps 
 - **Hostinger / any VPS** – upload the folder, `npm install`, run `npm start` with PM2.
 - **Render / Railway** – deploy from GitHub; add a **persistent disk** and set `DATA_DIR` and `UPLOAD_DIR` to it so photos and edits survive restarts.
 
-After launch, replace `www.nirmaleconventionhall.in` in `public/robots.txt` and `public/sitemap.xml` with the real domain.
+When you add your own domain, replace `nirmale-convention-hall.pages.dev` in `public/robots.txt` and `public/sitemap.xml` with it.
 
 ## Before launch – please confirm with the owner
 - WhatsApp number (currently set to 98805 40333).
