@@ -248,7 +248,7 @@
 
   R.hero = el => {
     const h = C.hero || {};
-    if (h.image) { const img = $('.hero-bg img', el); if (img) img.src = h.image; }
+    if (h.image) { const img = $('.hero-bg img', el); if (img && img.getAttribute('src') !== h.image) { img.removeAttribute('srcset'); img.src = h.image; } }
     if (h.title) {
       const words = h.title.split(' '); const tail = words.splice(-2).join(' ');
       $('h1', el).innerHTML = `${esc(words.join(' '))} <span class="gold-text">${esc(tail)}</span>`;

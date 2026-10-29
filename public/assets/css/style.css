@@ -686,3 +686,8 @@ p { margin: 0 0 1em; color: var(--muted); }
   .page-hero > .container { padding-top: 16px; }
   .page-hero .scroll-cue { display: none; }
 }
+
+/* Gallery page: keep space for the photos before they arrive, and give each photo a temporary shape
+   until it loads, so the Videos section below does not jump while visitors are reading */
+.masonry:empty { min-height: 120vh; }
+.masonry .g-item img { aspect-ratio: auto 4 / 3; }
