@@ -491,11 +491,14 @@
   function addSchema() {
     const s = C.site;
     const ld = {
-      '@context': 'https://schema.org', '@type': 'EventVenue', name: s.name, telephone: '+91' + digits(s.phone).slice(-10), email: s.email,
+      '@context': 'https://schema.org', '@type': 'EventVenue', name: s.name,
+      // Same hall under the names people search for (the Google Maps listing is "Nirmale Function Hall")
+      alternateName: ['Nirmale Function Hall', 'Nirmale Marriage Hall'],
+      description: 'Function hall and marriage hall in Aurad (B), Bidar for weddings, receptions, engagements and family functions.', telephone: '+91' + digits(s.phone).slice(-10), email: s.email,
       address: { '@type': 'PostalAddress', streetAddress: 'NH 161A, Bidar Road, Opposite to HP Petrol Bunk', addressLocality: 'Aurad (B), Bidar', addressRegion: 'Karnataka', postalCode: '585326', addressCountry: 'IN' },
-      image: location.origin + ((C.hero && C.hero.image) || ''), url: location.origin + '/',
-      maximumAttendeeCapacity: 1500,
-      aggregateRating: s.googleRating ? { '@type': 'AggregateRating', ratingValue: s.googleRating, bestRating: '5' } : undefined
+      image: location.origin + ((C.hero && C.hero.image) || ''), url: s.siteUrl || location.origin + '/',
+      sameAs: [s.mapUrl, s.instagram, s.facebook, s.youtube].filter(Boolean),
+      maximumAttendeeCapacity: 1500
     };
     const tag = document.createElement('script'); tag.type = 'application/ld+json'; tag.textContent = JSON.stringify(ld);
     document.head.append(tag);
