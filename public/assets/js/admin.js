@@ -334,7 +334,7 @@
         ${field('Main phone', 'phone', s.phone)}${field('Other phones', 'altPhones', s.altPhones)}
         ${field('WhatsApp number', 'whatsapp', s.whatsapp)}${field('Email', 'email', s.email, 'email')}
         ${field('Full address', 'address', s.address)}${field('Google Maps search text', 'mapQuery', s.mapQuery)}
-        ${field('Website address (for QR code)', 'siteUrl', s.siteUrl, 'url')}${field('Google Maps link (for QR code and directions)', 'mapUrl', s.mapUrl, 'url')}
+        ${field('Website address (for QR code)', 'siteUrl', s.siteUrl, 'url')}${field('Google Maps link (used only for the location QR code)', 'mapUrl', s.mapUrl, 'url')}
         ${field('Seating capacity (shown on About)', 'capacity', s.capacity)}${field('Visiting hours', 'hours', s.hours)}
         ${field('Google rating', 'googleRating', s.googleRating)}${field('Google reviews link', 'googleReviewsUrl', s.googleReviewsUrl, 'url')}
         ${field('Instagram link', 'instagram', s.instagram, 'url')}${field('Facebook link', 'facebook', s.facebook, 'url')}${field('YouTube channel link', 'youtube', s.youtube, 'url')}

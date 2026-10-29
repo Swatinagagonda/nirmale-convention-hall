@@ -66,7 +66,7 @@
   const wa = (text, num) => 'https://wa.me/91' + digits(num || C.site.whatsapp || C.site.phone).replace(/^(91|0)/, '').slice(-10) +
     '?text=' + encodeURIComponent(text || `Hello ${C.site.name}, I would like to enquire about booking the hall.`);
   const mail = () => 'mailto:' + C.site.email + '?subject=' + encodeURIComponent('Booking enquiry – ' + C.site.name);
-  const mapLink = () => C.site.mapUrl || 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(C.site.mapQuery || C.site.address);
+  const mapLink = () => 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(C.site.mapQuery || C.site.address);
 
   // ---------- Chrome: header, footer, floating bar, lightbox ----------
   function renderChrome() {
@@ -497,7 +497,7 @@
       description: 'Function hall and marriage hall in Aurad (B), Bidar for weddings, receptions, engagements and family functions.', telephone: '+91' + digits(s.phone).slice(-10), email: s.email,
       address: { '@type': 'PostalAddress', streetAddress: 'NH 161A, Bidar Road, Opposite to HP Petrol Bunk', addressLocality: 'Aurad (B), Bidar', addressRegion: 'Karnataka', postalCode: '585326', addressCountry: 'IN' },
       image: location.origin + ((C.hero && C.hero.image) || ''), url: s.siteUrl || location.origin + '/',
-      sameAs: [s.mapUrl, s.instagram, s.facebook, s.youtube].filter(Boolean),
+      sameAs: [s.instagram, s.facebook, s.youtube].filter(Boolean),
       maximumAttendeeCapacity: 1500
     };
     const tag = document.createElement('script'); tag.type = 'application/ld+json'; tag.textContent = JSON.stringify(ld);
