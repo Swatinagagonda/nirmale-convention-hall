@@ -78,7 +78,7 @@ Test the Cloudflare version on your computer: copy `.dev.vars.example` to `.dev.
 The live site is on **Cloudflare Pages** (above). It is not hosted on Render; an old Render copy at nirmale-convention-hall.onrender.com is outdated and should be deleted from the Render dashboard.
 `npm start` runs the Node.js server for local testing on http://localhost:3000.
 
-When you add your own domain, replace `nirmale-convention-hall.pages.dev` in `public/robots.txt` and `public/sitemap.xml` with it.
+The site's own address is https://nirmaleconventionhall.in (used in `public/robots.txt`, `public/sitemap.xml` and each page's canonical link).
 
 ## Before launch – please confirm with the owner
 - WhatsApp number (currently set to 98805 40333).
