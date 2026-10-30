@@ -1,88 +1,81 @@
-# Nirmale Convention Hall – Website
+# Nirmale Convention Hall Website
 
-A black & gold marketing website for **Nirmale Convention Hall, NH 161A, Bidar Road, Opposite to HP Petrol Bunk, Aurad (B)**, with an admin panel so the owner and manager can manage photos, videos and content themselves.
+Website for Nirmale Convention Hall, a function hall and marriage hall in Aurad (B), Bidar, Karnataka.
 
-## Pages
-| Page | File |
+Live site: https://nirmaleconventionhall.in
+
+Designed and developed by Swati Kushnoore.
+
+## About the project
+
+The hall needed a website where customers can see the venue, photos and events, and send a booking enquiry.
+The owner and manager also needed a simple way to update photos, videos and details without any coding.
+So the site has two parts:
+
+1. A public website with six pages: Home, About, Events, Facilities, Gallery and Contact.
+2. An admin panel where the owner and manager log in and manage everything.
+
+## Features
+
+**Website**
+* Photo gallery and YouTube videos
+* Booking enquiry form, with a one tap WhatsApp option
+* Call, WhatsApp and Book buttons on every page
+* Google Map with directions
+* Works well on phones, with smaller images for faster loading
+* Search friendly: page titles, sitemap, structured data for Google
+
+**Admin panel**
+* Upload, reorder, caption and delete photos
+* Add and arrange YouTube videos
+* View booking enquiries and mark them New, Contacted, Booked or Closed
+* Edit business details, events, facilities, reviews, owner and manager info
+* QR codes for the website and the hall location, ready to download, share or print
+* Password change for each admin user
+
+## Tech stack
+
+| Part | Used |
 |---|---|
-| Home | `public/index.html` |
-| About (with Owner & Manager) | `public/about.html` |
-| Events | `public/events.html` |
-| Facilities | `public/facilities.html` |
-| Gallery (30 photos + 10 YouTube videos) | `public/gallery.html` |
-| Booking Enquiry & Contact (form + map) | `public/contact.html` |
-| Admin panel | `public/admin.html` |
+| Frontend | HTML, CSS, JavaScript |
+| Backend API | Cloudflare Pages Functions |
+| Database and photo storage | Supabase (PostgreSQL) |
+| Hosting | Cloudflare Pages |
+| Domain | nirmaleconventionhall.in (GoDaddy, DNS on Cloudflare) |
 
-## Run on your computer
-```bash
-npm install
-npm start
+Admin passwords are stored as PBKDF2 hashes, logins use signed cookies, and the database is only reachable through the API.
+
+## Folder structure
+
 ```
-Open http://localhost:3000 – the admin panel is at http://localhost:3000/admin.html
-(also linked as “Admin” in the footer).
+public/            Website pages, styles, scripts and photos
+functions/api/     Backend API (enquiries, login, admin actions)
+supabase/          Database setup script
+scripts/           Script to copy content into Supabase
+.github/workflows/ Daily check that keeps the database active
+```
 
-## Admin login
-| Username | Password (first time) |
-|---|---|
-| `admin` (Owner) | the `ADMIN_PASSWORD` you set on the server |
-| `manager` | the same `ADMIN_PASSWORD` |
+## Running locally
 
-**Change both passwords after the first login** (Admin → Password).
+1. Install Node.js 18 or newer.
+2. Run `npm install`.
+3. Copy `.dev.vars.example` to `.dev.vars` and fill in the Supabase details and an admin password.
+4. Run `npm run cf:dev` and open the address it shows.
 
-In the admin panel you can:
-- **Photo Gallery** – upload (drag & drop, auto-resized), delete, re-order, change caption/category, choose which photos show on the Home page (★).
-- **Enquiries** – see every booking enquiry, call/WhatsApp the customer, mark New / Contacted / Booked / Closed.
-- **Videos** – paste any YouTube link to add; edit titles, re-order, delete.
-- **Owner & Manager** – edit names, descriptions, quotes and photos.
-- **Business Info** – phone, WhatsApp, email, address, map, capacity, social links, home banner and About text.
-- **Events / Facilities / Reviews & Stats** – edit text; mark facilities Available / Ask for details / Hidden.
+The admin panel is at `/admin`.
 
-## Where content lives
-- `data/content.json` – all editable content (`data/content.seed.json` is the original copy for reset).
-- `data/enquiries.json` – booking enquiries.
-- `data/users.json` – admin logins (hashed passwords, created on first start).
-- `public/uploads/` – all photos.
+## Deployment
 
-## Email notifications (optional)
-Enquiries are always saved in the admin panel and the customer is offered a one-tap WhatsApp send.
-To also receive each enquiry by email, set `SMTP_USER` and `SMTP_PASS` (a Gmail App Password) – see `.env.example`.
+The site deploys to Cloudflare Pages automatically on every push to `main`.
 
-## Going live for free – Cloudflare Pages + Supabase
-The pages are served by **Cloudflare Pages** (free, fast everywhere, never sleeps). The `/api/*` routes run as
-Cloudflare Pages Functions ([functions/api/[[path]].js](functions/api/[[path]].js)) and keep content, enquiries,
-admin logins and new photos in **Supabase** (free). The photos already in `public/uploads/` stay on Cloudflare.
+Settings in Cloudflare Pages:
+* Build command: none
+* Output directory: `public`
+* Secrets: `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `ADMIN_PASSWORD`, `SESSION_SECRET`
+* Optional email alerts: `RESEND_API_KEY`, `ENQUIRY_TO`
 
-1. **Supabase** – create a free project at https://supabase.com.
-   - SQL Editor → paste [supabase/schema.sql](supabase/schema.sql) → **Run**.
-   - Project Settings → API Keys: copy the **Project URL** and the **secret key** (`service_role`).
-   - Copy the current content into it (from this folder, in Git Bash):
-     copy `.dev.vars.example` to `.dev.vars`, fill in the two Supabase values, then run `npm run supabase:import`
-2. **GitHub** – push this folder to your repository.
-3. **Cloudflare** – free account at https://dash.cloudflare.com → Workers & Pages → Create → Pages →
-   *Connect to Git* → choose the repository.
-   - Framework preset: **None**, Build command: *(leave empty)*, Build output directory: **public**.
-   - Settings → Variables and Secrets (type *Secret*): `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`,
-     `ADMIN_PASSWORD`, `SESSION_SECRET` (any long random text). Then **Retry deployment**.
-   - The site is live at `https://<project-name>.pages.dev`. Every push to GitHub redeploys it.
-4. **Keep Supabase awake** – free Supabase projects pause after a week with no activity. In GitHub →
-   Settings → Secrets and variables → Actions → *Variables*, add `SITE_URL` = your site address; the
-   [daily ping](.github/workflows/keep-supabase-awake.yml) then keeps it active.
-5. **Your own domain (later)** – Cloudflare Pages project → Custom domains → *Set up a domain*. If the domain is
-   bought at GoDaddy, change its nameservers to the two Cloudflare gives you; Cloudflare adds the DNS record and SSL.
-6. **Email for each enquiry (optional)** – free account at https://resend.com, then add `RESEND_API_KEY` and
-   `ENQUIRY_TO` (the owner's email) in Cloudflare.
+For a new Supabase project, run `supabase/schema.sql` in the SQL editor, then `npm run supabase:import` to load the content.
 
-Test the Cloudflare version on your computer: copy `.dev.vars.example` to `.dev.vars`, fill it in, run `npm run cf:dev`.
+## License
 
-## Hosting
-The live site is on **Cloudflare Pages** (above). It is not hosted on Render; an old Render copy at nirmale-convention-hall.onrender.com is outdated and should be deleted from the Render dashboard.
-`npm start` runs the Node.js server for local testing on http://localhost:3000.
-
-The site's own address is https://nirmaleconventionhall.in (used in `public/robots.txt`, `public/sitemap.xml` and each page's canonical link).
-
-## Before launch – please confirm with the owner
-- WhatsApp number (currently set to 98805 40333).
-- Which facilities are really provided (only Stage, Lighting, Sound and Décor are marked *Available*; the rest show “Ask for details”).
-- Seating capacity (Business Info → Capacity).
-- The 10 videos are third-party wedding-décor videos from YouTube as placeholders – replace them with the hall's own videos when available.
-- Some décor photos carry other decorators' watermarks/phone numbers; replace with the hall's own event photos over time.
+This website was built for Nirmale Convention Hall. The code, photos and content are not for reuse without permission.

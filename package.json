@@ -1,7 +1,9 @@
 {
   "name": "nirmale-convention-hall",
   "version": "1.0.0",
-  "description": "Website for Nirmale Convention Hall, Aurad – with admin panel for photos, videos and content",
+  "description": "Website and admin panel for Nirmale Convention Hall, Aurad (B), Bidar",
+  "author": "Swati Kushnoore",
+  "homepage": "https://nirmaleconventionhall.in",
   "main": "server.js",
   "private": true,
   "scripts": {
